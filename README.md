@@ -1,4 +1,4 @@
-#  Proyecto Bingo
+#  Bingo Project
 
 ## Team Members
 
