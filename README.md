@@ -3,5 +3,5 @@
 ## Team Members
 
 ### Esteban Murillo
-### Daniel Sibaja 
+### Daniel Vargas 
 ### Kevin Vanegas 
