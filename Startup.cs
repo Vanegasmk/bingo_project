@@ -23,8 +23,18 @@ namespace project_bingo
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //Connection to Npgsql
             services.AddDbContext<DataBaseContext>(opt => opt.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")).UseSnakeCaseNamingConvention());
+
             services.AddSignalR();//Add Service SignalR
+
+            services.AddCors(options => options.AddPolicy("CorsPolicy", builder =>
+            {
+                builder.AllowAnyMethod().AllowAnyHeader().WithOrigins("https://localhost:5001/").AllowCredentials();
+            }
+            ));
+
+
             services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -50,12 +60,7 @@ namespace project_bingo
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-            //Add signalr EndPoint
-            app.UseEndpoints(endpoints => 
-            {
-                endpoints.MapHub<BingoHub>("/bingoHub");
-            });
-
+            app.UseCors("CorsPolicy");
 
             if (!env.IsDevelopment())
             {
@@ -63,12 +68,15 @@ namespace project_bingo
             }
 
             app.UseRouting();
-
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller}/{action=Index}/{id?}");
+
+                endpoints.MapControllers();
+                endpoints.MapHub<BingoHub>("/bingoHub");
             });
 
             app.UseSpa(spa =>

@@ -8,7 +8,7 @@ namespace project_bingo.Hubs
 {
     public class BingoHub : Hub
     {
-        public void Echo(String message)
+        public void Echo(string message)
         {
             Clients.All.SendAsync("SendMessage", message);
         }
