@@ -1,0 +1,99 @@
+html, body{
+    /* background: rgb(189,38,26);
+    background: linear-gradient(103deg, rgba(189,38,26,1) 0%, rgba(209,175,12,1) 46%, rgba(222,192,106,1) 100%); */
+    height: 100%;
+    width: 100%;
+    font: 100% sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#playground{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    top: 0%;
+}
+
+#game{
+    /* background-color: black; */
+    height: 50vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+#image{
+    padding-left: 5vw;
+    padding-top: 2vh;
+    width: 25%;
+}
+
+#tombola{
+    width: 17vw;
+    height: 30vh;
+}
+
+#controller{
+    height: 70%;
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#number{
+    width: 6vw;
+    height: 6vh;
+    font-size: 3.5vh;
+    text-align: center;
+}
+
+#selector{
+    width: 4vw;
+    height: vh;
+}
+#table{
+    padding-top: 4vh;
+    padding-left: 3vw;
+    padding-right: 3vw;
+    width: 45%;
+}
+
+#table table tbody tr td{
+    width: 4vw;
+    height: 3.7vh;
+}
+
+#cheackbox-chat{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 5%;
+    
+}
+
+#spacer{
+    width: 5vw;
+}
+
+#divider{
+    background-color: gray;
+    height: 0.3vh;
+    width: 100%;
+}
+
+
+#cardboards{
+    height: 50vh;
+    width: 100%;
+}
+
+#chat{
+    display: none;
+    width: 0%;
+}
