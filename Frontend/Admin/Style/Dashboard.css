@@ -21,13 +21,19 @@ html, body{
     width: 100%;
 }
 
+#btn-del{
+    background-color: rgba(189,38,26,1);
+    color: white;
+}
+
 #secundary{
     background-color: rgba(189,38,26,1);
     color: white;
 }
 
 #primary{
-    background-color: rgba(222,192,106,1);
+    background-color: rgba(209,175,12,1);
+    color: white;
 }
 
 nav{
