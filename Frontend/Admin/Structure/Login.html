@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="../Style/Login.css">        
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"
+        integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row" id="login">
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-body, container">
+                        <div id="imagen" >
+                            <img id="us" style="display:inline-block" src="https://st2.depositphotos.com/5266903/8063/v/950/depositphotos_80633126-stock-illustration-user-flat-yellow-color-rounded.jpg" class="card-img-top, responsive-img" >
+                        </div>
+                        <div id="spacer"></div>
+                        <form action="back-end/login.php" method="POST">
+                        <!-- <div id="letras"><h3 style="text-align: center; margin: 4px; margin-bottom: 8px;">Login</h3></div>
+                        <div id="letras1" style="text-align: center;"><h5 style="margin: 4px; margin-bottom: 8px;">Login</h5></div> -->
+                            
+                            <div class="form-group">
+                                <div id="password-field" style="display: flex; flex-direction: row;">
+                                    <input type="text" class="form-control" placeholder="Email" name="email" style="width: 100%; margin-bottom: 5px;">
+                                    <i class="far fa-envelope"></i>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div id="password-field" style="display: flex; flex-direction: row;">
+                                    <input id="pswrd" type="password" class="form-control" placeholder="Password" name="contra" style="width: 100%; margin-bottom: 2px;">   
+                                    <i class="fas fa-lock" onclick="show()"></i>
+                                </div>
+                            </div>
+                            <br>
+                            <button type="submit" style="letter-spacing:2px; background-color: rgba(209,175,12,1); width: 100%;" class="btn btn-success" name="login">
+                                <a style="text-decoration: none; color: white;" href="Dashboad.html">Sign in</a>
+                            </button>
+                        </form>
+                    </div>
+                    <script>
+                        function show(){
+                         var pswrd = document.getElementById('pswrd');
+                         var icon = document.querySelector('.fas');
+                         if (pswrd.type === "password") {
+                          pswrd.type = "text";
+                          icon.style.color = " rgba(209,175,12,1)";
+                         }else{
+                          pswrd.type = "password";
+                          icon.style.color = "lightslategrey";
+                         }
+                        }
+                       </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js"
+    integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J" crossorigin="anonymous">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js">
+</script>
+</html>
+
