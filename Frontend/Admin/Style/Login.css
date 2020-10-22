@@ -1,0 +1,101 @@
+html, body{
+    background: rgb(189,38,26);
+    background: linear-gradient(103deg, rgba(189,38,26,1) 0%, rgba(209,175,12,1) 46%, rgba(222,192,106,1) 100%);
+    height: 100%;
+    width: 100%;
+    font: 100% sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.card{
+    display: flex;
+    flex-direction: column;
+    /*align-items: center;
+    justify-content: center;*/
+    top: 3vh;
+    vertical-align: middle;
+    padding-top: 10%;
+    padding-bottom: 10%;
+    font: 100% sans-serif;
+    letter-spacing:2px;
+}
+
+#letras, #letras1{
+    width: 100%;
+}
+
+h5{
+    display: none;
+}
+
+#password-field{
+    display: flex;
+    flex-direction: column;
+}
+
+input::placeholder {
+    color: lightslategrey;
+    font: 100% sans-serif;
+    letter-spacing:2px;
+}
+
+#imagen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#us{
+    width: 12vw;
+    height: 22;
+}
+
+form i{
+    position: absolute;
+    font-size: 25px;
+    color: lightslategrey;
+    transform: translate(17vw, 1vh);
+}
+
+#spacer{
+    padding: 8%;
+}
+
+@media only screen and (max-width: 992px) {
+    form i{
+        transform: translate(25vw, 1vh);
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    #cabeza {
+        height: 10vh;
+    }
+
+    form i{
+        transform: translate(23vw, 1vh);
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    h5{
+        display: flex;
+    }
+
+    h3{
+        display: none;
+    }
+
+    .card{
+        font-size: 5px;  
+    }
+}
