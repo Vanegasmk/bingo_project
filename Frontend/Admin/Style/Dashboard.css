@@ -13,6 +13,23 @@ html, body{
     text-decoration: none;
 }
 
+.modal-dialog{
+    top: 25%;
+}
+
+#name-form{
+    width: 100%;
+}
+
+#secundary{
+    background-color: rgba(189,38,26,1);
+    color: white;
+}
+
+#primary{
+    background-color: rgba(222,192,106,1);
+}
+
 nav{
     height: 70px;
     /* background: #063247; */
