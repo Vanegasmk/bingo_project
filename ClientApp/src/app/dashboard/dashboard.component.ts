@@ -50,7 +50,7 @@ export class DashboardComponent {
     );
   }
 
-  getRooms() { 
+  getRooms() { //Get all room from database
     this.http.get<Room[]>(this.baseUrl + "api/dashboard").subscribe(
       (result) => {
         this.rooms = result;
