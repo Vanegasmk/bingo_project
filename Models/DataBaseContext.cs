@@ -8,6 +8,6 @@ namespace bingo_project.Models
         {
             
         }
-        public DbSet<Room> Room  { get; set; }
+        public DbSet<Room> Rooms { get; set; }
     }
 }
