@@ -6,8 +6,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
-using project_bingo.Hubs;
-using project_bingo.Models;
+using bingo_project.Hubs;
+using bingo_project.Models;
 
 namespace project_bingo
 {

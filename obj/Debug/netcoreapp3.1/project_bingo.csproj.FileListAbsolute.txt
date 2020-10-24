@@ -157,3 +157,4 @@
 /home/vanegasmk/Documentos/Proyectos/bingo_project/obj/Debug/netcoreapp3.1/project_bingo.dll
 /home/vanegasmk/Documentos/Proyectos/bingo_project/obj/Debug/netcoreapp3.1/project_bingo.pdb
 /home/vanegasmk/Documentos/Proyectos/bingo_project/obj/Debug/netcoreapp3.1/project_bingo.genruntimeconfig.cache
+/home/vanegasmk/Documentos/Proyectos/bingo_project/bin/Debug/netcoreapp3.1/package-lock.json

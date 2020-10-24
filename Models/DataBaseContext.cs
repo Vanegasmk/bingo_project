@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace project_bingo.Models
+namespace bingo_project.Models
 {
     public class DataBaseContext : DbContext
     {
@@ -8,5 +8,6 @@ namespace project_bingo.Models
         {
             
         }
+        public DbSet<Room> Room  { get; set; }
     }
 }

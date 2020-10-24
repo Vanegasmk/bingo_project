@@ -1,1 +1,79 @@
-<p>dashboard works!</p>
+<div id="nav-bar">
+    <nav style="display: flex; flex-direction: row;">
+        <div id="logo">
+            <span>BINGO</span>
+        </div>
+        <div class="opt">
+            <div id="name">
+                <span>Admin name</span>
+            </div>
+            <div class="dropdown">
+                <span>menu<i class="fas fa-caret-down"></i></span>
+                <div class="dropdown-content">
+                <span><a style="text-decoration: none; color:black" href="Login.html">Sign out</a></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div id="spacer"></div>
+        <div id="search">
+            <form id="form1" action="">
+                <input id="searcher" type="text" placeholder="Buscar"><i class="fas fa-search"></i>
+            </form>
+            <div id="btn-create">
+                <a id="Button" class="btn" data-toggle="modal" data-target="#exampleModal"><span>CREATE ROOM</span></a>
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Create a room</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <form action="">
+                              <input id="name-form" type="text" name="name-room" placeholder="Name of the room">
+                          </form>
+                        </div>
+                        <div class="modal-footer">
+                          <button id="secundary" type="button" class="btn" data-dismiss="modal">Close</button>
+                          <button id="primary" type="button" class="btn">Generate Link</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div id="table">
+            <div id="resoults">
+                <table id="table-resoults" class="table table-hover table-striped">
+                    <thead id="tablehead">
+                        <tr>
+                            <th id="col-id">ID</th>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>N° users</th>
+                            <th>Link</th>
+                            <th>Options</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="col-id"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><button id="btn-del" class="btn" (click)="animal.confirmation = true">Delete</button></td>
+                        </tr>
+                </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="spacer"></div>
+    </div>
+</div>
