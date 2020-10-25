@@ -28,9 +28,9 @@ export class DashboardComponent {
 
   saveRoom() { // Save new room in database
     this.http
-      .post<Room>(this.baseUrl + "api/dashboard", {
+      .post<Room>(this.baseUrl + "api/Rooms", {
         name: this.room.name,
-        code: this.room.code,
+        code: this.createRandomCode(),
       })
       .subscribe(
         (result) => {
@@ -42,7 +42,7 @@ export class DashboardComponent {
 
   deleteRoom(room: Room) { // Remove room from database
     
-    this.http.delete(this.baseUrl + "api/dashboard/" + room.id).subscribe(
+    this.http.delete(this.baseUrl + "api/Rooms/" + room.id).subscribe(
       (result) => {
         this.getRooms();
       },
@@ -51,12 +51,18 @@ export class DashboardComponent {
   }
 
   getRooms() { //Get all room from database
-    this.http.get<Room[]>(this.baseUrl + "api/dashboard").subscribe(
+    this.http.get<Room[]>(this.baseUrl + "api/Room").subscribe(
       (result) => {
         this.rooms = result;
         this.showForm = false;
       },
       (error) => console.error(error)
     );
+  }
+
+  createRandomCode()//Generates a hexadecimal code
+  { 
+    var code = (Math.random() * 0xffff * 1000000).toString(16);
+    return code.slice(0,6);
   }
 }
