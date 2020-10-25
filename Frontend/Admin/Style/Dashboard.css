@@ -62,11 +62,7 @@ nav{
 }
 
 .opt{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
     align-items: center;
-    /* margin-right: 30px; */
     height: 100%;
     width: 80%;
 }
@@ -85,11 +81,9 @@ th{
 }
 
 .dropdown {
-    position: relative;
-    display: inline-block;
     font-size: 2.5vw;
     width: 20vw;
-    height: 120%;
+    height: 110%;
     text-align: center;
     position: absolute;
 }
