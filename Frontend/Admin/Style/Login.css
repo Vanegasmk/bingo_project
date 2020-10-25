@@ -15,6 +15,14 @@ html, body{
     align-items: center;
     justify-content: center;
 }
+
+#card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .card{
     display: flex;
     flex-direction: column;
@@ -63,26 +71,23 @@ form i{
     position: absolute;
     font-size: 25px;
     color: lightslategrey;
-    transform: translate(17vw, 1vh);
+    right: 30%;
+    margin-top: 1.5%;
 }
 
 #spacer{
     padding: 8%;
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 991px) {
     form i{
-        transform: translate(25vw, 1vh);
+        right: 20%;
     }
 }
 
 @media only screen and (max-width: 800px) {
     #cabeza {
         height: 10vh;
-    }
-
-    form i{
-        transform: translate(23vw, 1vh);
     }
 }
 
