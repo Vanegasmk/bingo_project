@@ -92,6 +92,10 @@ html, body{
     right: 1vw;
 }
 
+#check{
+    visibility: hidden;
+}
+
 #check:checked ~ .chat{
     right:0vw;
 }
