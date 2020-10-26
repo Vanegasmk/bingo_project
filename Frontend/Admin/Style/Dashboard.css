@@ -62,8 +62,6 @@ nav{
 }
 
 .opt{
-    align-items: center;
-    height: 100%;
     width: 80%;
 }
 
@@ -83,7 +81,7 @@ th{
 .dropdown {
     font-size: 2.5vw;
     width: 20vw;
-    height: 110%;
+    height: 100%;
     text-align: center;
     position: absolute;
 }
@@ -108,6 +106,7 @@ th{
     text-align: center;
     background-color: rgba(222,192,106,1);
     border-top: 4px solid  rgba(209,175,12,1);
+    margin-top: 2.5%;
 }
 
 .dropdown-content span a{

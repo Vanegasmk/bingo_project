@@ -53,7 +53,7 @@ html, body{
 
 #selector{
     width: 4vw;
-    height: vh;
+    height: 5vh;
 }
 #table{
     padding-top: 4vh;
@@ -84,6 +84,31 @@ html, body{
 #cardboards{
     height: 50vh;
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    background: rgb(189,38,26);
+    background: linear-gradient(103deg, rgba(189,38,26,1) 0%, rgba(209,175,12,1) 46%, rgba(222,192,106,1) 100%);
+}
+
+#cardboard{
+    margin-right: 1vw;
+    margin-left:  1vw;
+    background: white;
+
+}
+
+#cardboards #cardboard table thead tr th{
+    
+    border: 1px solid black;
+}
+
+#cardboards #cardboard table tbody tr td{
+    height: 5vh;
+    width: 5vw;
+    border: 1px solid black;
 }
 
 .chekbox{
@@ -124,6 +149,9 @@ nav{
 
 .content{
     height: 78.7vh;
+    overflow: visible;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .content p{

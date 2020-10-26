@@ -1,4 +1,6 @@
 html, body{
+    background: rgb(189,38,26);
+    background: linear-gradient(103deg, rgba(189,38,26,1) 0%, rgba(209,175,12,1) 46%, rgba(222,192,106,1) 100%);
     height: 100%;
     width: 100%;
     font: 100% sans-serif;
@@ -7,26 +9,65 @@ html, body{
     justify-content: center;
 }
 
-.container-all{
-    border: 1px solid black;
-    width: 20vw;
-    height: 50vh;
+#login{
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+#card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    top: 3vh;
+    vertical-align: middle;
+    font: 100% sans-serif;
+    letter-spacing:2px;
+}
+
+#letras{
+    font-weight: 500;
+    font-size: 1.5vw;
+    margin-top: 5vh;
+}
+
+#password-field{
+    display: flex;
     flex-direction: column;
 }
 
-.container-all form input{
-    width: 100%;
+#imagen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-#btn-getin{
-    width: 100%;
-    margin-top: 25%;
+#us{
+    width: 12vw;
+    height: 22;
 }
 
-#anchor{
-    text-decoration: none;
-    color: black;
+#spacer{
+    padding: 3%;
+}
+
+@media only screen and (max-width: 800px) {
+    #cabeza {
+        height: 10vh;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+
+    .card{
+        font-size: 5px;  
+    }
 }

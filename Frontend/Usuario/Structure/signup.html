@@ -10,18 +10,37 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
 </head>
 <body>
-    <div class="container-all">
-        <h4>WELCOME TO THE ROOM</h4>
-        <br>
-        <br>
-        <br>
-        <form action="">
-            <input type="text" name="username" placeholder="Username">
-            <br>
-            <br>
-            <input type="number" name="cardboards" placeholder="N° cardboards">
-            <button id="btn-getin" class="btn" type="button"><a id="anchor" href="../Structure/room.html">Get in</a></button>
-        </form>
+    <div class="container">
+        <div class="row" id="login">
+            <div class="col-6">
+                <div class="card">
+                    <div id="card" class="card-body">
+                        <span id="letras">WELCOME TO THE ROOM</span>
+                        <div id="spacer"></div>
+                        <div id="imagen" >
+                            <img id="us" style="display:inline-block" src="https://st2.depositphotos.com/5266903/8063/v/950/depositphotos_80633126-stock-illustration-user-flat-yellow-color-rounded.jpg" class="card-img-top, responsive-img" >
+                        </div>
+                        <div id="spacer"></div>
+                        <form action="back-end/login.php" method="POST">
+                        <div class="form-group">
+                                <div id="password-field" style="display: flex; flex-direction: row;">
+                                    <input type="text" class="form-control" placeholder="Username" name="username" style="width: 100%; margin-bottom: 5px;">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div id="password-field" style="display: flex; flex-direction: row;">
+                                    <input id="pswrd" type="number" class="form-control" placeholder="N° carboards" name="carboards" style="width: 100%; margin-bottom: 2px;">   
+                                </div>
+                            </div>
+                            <br>
+                            <button type="submit" style="letter-spacing:2px; background-color: rgba(209,175,12,1); width: 100%; margin-bottom: 5vh;" class="btn" name="login">
+                                <a style="text-decoration: none; color: white;" href="room.html">Sign in</a>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

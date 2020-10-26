@@ -26,12 +26,8 @@ html, body{
 .card{
     display: flex;
     flex-direction: column;
-    /*align-items: center;
-    justify-content: center;*/
     top: 3vh;
     vertical-align: middle;
-    padding-top: 10%;
-    padding-bottom: 10%;
     font: 100% sans-serif;
     letter-spacing:2px;
 }
