@@ -1,13 +1,42 @@
 <h1>Dashboard</h1>
 <div class="form" *ngIf="showForm">
-    <div class="mb-5">
-      <label for="name">Name:</label>
-      <input class="form-control" type="text" placeholder="Room 1, Room 2" [(ngModel)]="room.name">
-      <div>
-        <button class="btn btn-primary" (click)="saveRoom()">Save</button>
-        <button class="btn btn-danger" (click)="showForm = false">Cancel</button>
-      </div>
+  <div class="mb-5">
+    <label for="name">Name:</label>
+    <input class="form-control" type="text" placeholder="Room 1, Room 2" [(ngModel)]="room.name">
+    <div>
+      <button class="btn btn-primary" (click)="saveRoom()">Save</button>
+      <button class="btn btn-danger" (click)="showForm = false">Cancel</button>
     </div>
+  </div>
 </div>
 
 <button class="btn btn-primary" (click)="newRoom()">New Room</button>
+
+
+<table class='table table-striped mt-2' *ngIf="rooms">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Code</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let room of rooms">
+      <td>{{ room.id }}</td>
+      <td>{{ room.name }}</td>
+      <td>{{ room.code }}</td>
+      <td>
+        <div *ngIf="!room.confirmation">
+          <button class="btn btn-success mr-2" [routerLink]="['/room',room.code]" >Enter to Room</button>
+          <button class="btn btn-danger" (click)="room.confirmation = true">Delete</button>
+        </div>
+        <div *ngIf="room.confirmation">
+          <button class="btn btn-danger mr-2" (click)="room.confirmation = false">Cancel</button>
+          <button class="btn btn-success" (click)="deleteRoom(room)">Confirm</button>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

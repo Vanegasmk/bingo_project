@@ -8,9 +8,26 @@ namespace bingo_project.Hubs
 {
     public class BingoHub : Hub
     {
-        public void Echo(string message)
+
+        public async override Task OnConnectedAsync()
         {
-            Clients.All.SendAsync("SendMessage", message);
+            await base.OnConnectedAsync();
+            await Clients.Caller.SendAsync("Message", "Connected successfully!");
         }
+
+        public async Task SubscribeToBingoRoom(Guid boardId)
+        {
+            await Groups.AddToGroupAsync(Context.ConnectionId, boardId.ToString());
+            await Clients.Caller.SendAsync("Message", "Added to board successfully!");
+        }
+
+        public async Task RemoveFromBingoRoom(Guid boardId)
+        {
+            await Groups.RemoveFromGroupAsync(Context.ConnectionId, boardId.ToString());
+            await Clients.Caller.SendAsync("Message", "Removed from board successfully!");
+        }
+
+        
+
     }
 }

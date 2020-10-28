@@ -158,3 +158,17 @@
 /home/vanegasmk/Documentos/Proyectos/bingo_project/obj/Debug/netcoreapp3.1/project_bingo.pdb
 /home/vanegasmk/Documentos/Proyectos/bingo_project/obj/Debug/netcoreapp3.1/project_bingo.genruntimeconfig.cache
 /home/vanegasmk/Documentos/Proyectos/bingo_project/bin/Debug/netcoreapp3.1/package-lock.json
+/home/vanegasmk/Documentos/Proyectos/bingo_project/bin/Debug/netcoreapp3.1/Microsoft.Win32.Registry.dll
+/home/vanegasmk/Documentos/Proyectos/bingo_project/bin/Debug/netcoreapp3.1/Pipelines.Sockets.Unofficial.dll
+/home/vanegasmk/Documentos/Proyectos/bingo_project/bin/Debug/netcoreapp3.1/StackExchange.Redis.dll
+/home/vanegasmk/Documentos/Proyectos/bingo_project/bin/Debug/netcoreapp3.1/System.Diagnostics.PerformanceCounter.dll
+/home/vanegasmk/Documentos/Proyectos/bingo_project/bin/Debug/netcoreapp3.1/System.IO.Pipelines.dll
+/home/vanegasmk/Documentos/Proyectos/bingo_project/bin/Debug/netcoreapp3.1/System.Security.AccessControl.dll
+/home/vanegasmk/Documentos/Proyectos/bingo_project/bin/Debug/netcoreapp3.1/System.Security.Principal.Windows.dll
+/home/vanegasmk/Documentos/Proyectos/bingo_project/bin/Debug/netcoreapp3.1/System.Threading.Channels.dll
+/home/vanegasmk/Documentos/Proyectos/bingo_project/bin/Debug/netcoreapp3.1/runtimes/unix/lib/netstandard2.0/Microsoft.Win32.Registry.dll
+/home/vanegasmk/Documentos/Proyectos/bingo_project/bin/Debug/netcoreapp3.1/runtimes/win/lib/netstandard2.0/Microsoft.Win32.Registry.dll
+/home/vanegasmk/Documentos/Proyectos/bingo_project/bin/Debug/netcoreapp3.1/runtimes/win/lib/netcoreapp2.0/System.Diagnostics.PerformanceCounter.dll
+/home/vanegasmk/Documentos/Proyectos/bingo_project/bin/Debug/netcoreapp3.1/runtimes/win/lib/netcoreapp2.0/System.Security.AccessControl.dll
+/home/vanegasmk/Documentos/Proyectos/bingo_project/bin/Debug/netcoreapp3.1/runtimes/unix/lib/netcoreapp2.1/System.Security.Principal.Windows.dll
+/home/vanegasmk/Documentos/Proyectos/bingo_project/bin/Debug/netcoreapp3.1/runtimes/win/lib/netcoreapp2.1/System.Security.Principal.Windows.dll

@@ -8,7 +8,7 @@ namespace project_bingo.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "room",
+                name: "rooms",
                 columns: table => new
                 {
                     id = table.Column<long>(nullable: false)
@@ -18,14 +18,14 @@ namespace project_bingo.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("pk_room", x => x.id);
+                    table.PrimaryKey("pk_rooms", x => x.id);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "room");
+                name: "rooms");
         }
     }
 }
