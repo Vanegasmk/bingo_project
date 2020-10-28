@@ -28,6 +28,17 @@ namespace bingo_project.Controllers
             return await _context.Rooms.ToListAsync();
         }
 
+        [HttpGet("{code}")]
+        public async Task<ActionResult<Room>> GetRoom(string code)
+        {
+            var room = await _context.Rooms.FindAsync(code);
+            if (room == null)
+            {
+                return NotFound();
+            }
+            return room;
+        }
+
         [HttpPost]
         public async Task<ActionResult<Room>> PostRoom(Room room)
         {

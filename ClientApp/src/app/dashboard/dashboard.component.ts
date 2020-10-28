@@ -13,9 +13,10 @@ export class DashboardComponent {
   public room: Room;
   public showForm = false;
 
-  constructor(public http: HttpClient,
-    @Inject("BASE_URL") public baseUrl: string
-  ) {}
+  constructor(public http: HttpClient, @Inject("BASE_URL") public baseUrl: string) 
+  {
+    this.getRooms();
+  }
 
   newRoom() { //initialize new room
     this.showForm = true;
@@ -28,7 +29,7 @@ export class DashboardComponent {
 
   saveRoom() { // Save new room in database
     this.http
-      .post<Room>(this.baseUrl + "api/Rooms", {
+      .post<Room>(this.baseUrl + "api/rooms", {
         name: this.room.name,
         code: this.createRandomCode(),
       })
@@ -42,7 +43,7 @@ export class DashboardComponent {
 
   deleteRoom(room: Room) { // Remove room from database
     
-    this.http.delete(this.baseUrl + "api/Rooms/" + room.id).subscribe(
+    this.http.delete(this.baseUrl + "api/rooms/" + room.id).subscribe(
       (result) => {
         this.getRooms();
       },
@@ -51,7 +52,7 @@ export class DashboardComponent {
   }
 
   getRooms() { //Get all room from database
-    this.http.get<Room[]>(this.baseUrl + "api/Room").subscribe(
+    this.http.get<Room[]>(this.baseUrl + "api/rooms").subscribe(
       (result) => {
         this.rooms = result;
         this.showForm = false;

@@ -8,6 +8,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using bingo_project.Hubs;
 using bingo_project.Models;
+using StackExchange.Redis;
+using Microsoft.Extensions.Options;
+
 
 namespace project_bingo
 {
@@ -28,6 +31,7 @@ namespace project_bingo
 
             services.AddSignalR();//Add Service SignalR
 
+            
             services.AddCors(options => options.AddPolicy("CorsPolicy", builder =>
             {
                 builder.AllowAnyMethod().AllowAnyHeader().WithOrigins("https://localhost:5001/").AllowCredentials();
@@ -67,7 +71,10 @@ namespace project_bingo
                 app.UseSpaStaticFiles();
             }
 
+
+
             app.UseRouting();
+            app.UseAuthentication();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
@@ -76,7 +83,7 @@ namespace project_bingo
                     pattern: "{controller}/{action=Index}/{id?}");
 
                 endpoints.MapControllers();
-                endpoints.MapHub<BingoHub>("/bingoHub");
+                endpoints.MapHub<BingoHub>("/room");
             });
 
             app.UseSpa(spa =>

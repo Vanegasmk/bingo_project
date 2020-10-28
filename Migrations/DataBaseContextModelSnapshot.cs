@@ -35,9 +35,9 @@ namespace project_bingo.Migrations
                         .HasColumnType("text");
 
                     b.HasKey("Id")
-                        .HasName("pk_room");
+                        .HasName("pk_rooms");
 
-                    b.ToTable("room");
+                    b.ToTable("rooms");
                 });
 #pragma warning restore 612, 618
         }

@@ -16,13 +16,14 @@ export class ChatComponent {
   public messages: string[] = [];
   public hubConnection : HubConnection;
   public user : PublicChat;
+  public loginToken : string = "Kevin";
   
   constructor() {
     this.builConnection();
   }
 
   builConnection() {
-    this.hubConnection = new HubConnectionBuilder().withUrl("/bingoHub").build();
+    this.hubConnection = new HubConnectionBuilder().withUrl("/room", { accessTokenFactory : () => this.loginToken  }).build();
 
     this.hubConnection.on("SendMessage", (msg) => {
       this.messages.push(msg);

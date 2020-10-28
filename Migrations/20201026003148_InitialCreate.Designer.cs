@@ -9,7 +9,7 @@ using bingo_project.Models;
 namespace project_bingo.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20201024202854_InitialCreate")]
+    [Migration("20201026003148_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -37,9 +37,9 @@ namespace project_bingo.Migrations
                         .HasColumnType("text");
 
                     b.HasKey("Id")
-                        .HasName("pk_room");
+                        .HasName("pk_rooms");
 
-                    b.ToTable("room");
+                    b.ToTable("rooms");
                 });
 #pragma warning restore 612, 618
         }
