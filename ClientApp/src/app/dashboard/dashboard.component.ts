@@ -2,7 +2,7 @@ import { THIS_EXPR } from "@angular/compiler/src/output/output_ast";
 import { Component, Inject } from "@angular/core";
 import { Room } from "./room.interface";
 import { HttpClient } from "@angular/common/http";
-
+import Swal from 'sweetalert2'
 @Component({
   selector: "app-dashboard",
   templateUrl: "./dashboard.component.html",
@@ -65,5 +65,14 @@ export class DashboardComponent {
   { 
     var code = (Math.random() * 0xffff * 1000000).toString(16);
     return code.slice(0,6);
+  }
+
+  generateLink(id:string)
+  { 
+    Swal.fire({
+      icon: 'success',
+      title: 'Link generated!',
+      text: 'https://localhost:5001/room/' + id,
+    });
   }
 }
