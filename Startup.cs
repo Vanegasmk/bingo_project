@@ -8,7 +8,6 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using bingo_project.Hubs;
 using bingo_project.Models;
-using StackExchange.Redis;
 using Microsoft.Extensions.Options;
 
 
