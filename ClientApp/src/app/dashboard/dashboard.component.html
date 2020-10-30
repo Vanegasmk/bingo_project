@@ -1,0 +1,167 @@
+<div class="d-flex">
+  <div id="sidebar-container" class="bg-primary">
+    <div class="logo">
+      <h4 class="text-light font-weight-bold">Dashboard Tico Bingo</h4>
+    </div>
+    <div class="menu">
+      <a class="d-block p-3 text-light" (click)="newRoom()">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+        Add New Room
+      </a>
+    </div>
+  </div>
+
+
+  <div class="w-100">
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Welcome Admin
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Log out</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <br>
+    <div class="container">
+      <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          Rooms
+        </div>
+
+        <div class="card o-hidden border-0 shadow-lg my-5" *ngIf="showForm">
+          <div class="card-body p-2">
+            <div class="p-5">
+              <div class="form-group row">
+
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                  <label>Name</label>
+                  <input class="form-control" type="text" placeholder="Room 1, Room 2" [(ngModel)]="room.name">
+                </div>
+
+              </div>
+              <button class="btn btn-primary mr-2" (click)="saveRoom()">Save</button>
+              <button class="btn btn-danger" (click)="showForm = false">Cancel</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" with="100%" *ngIf="rooms">
+              <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Name</th>
+                  <th>Code Room</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let room of rooms">
+                  <td>{{ room.id }}</td>
+                  <td>{{ room.name }}</td>
+                  <td>{{ room.code }}</td>
+                  <td>
+                    <div *ngIf="!room.confirmation">
+                      <button class="btn btn-success mr-2" [routerLink]="['/room',room.code]">
+                        <i class="fa fa-sign-in" aria-hidden="true"></i>
+                        Enter to Room
+                      </button>
+                      <button class="btn btn-danger mr-2" (click)="room.confirmation = true">
+                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                        Delete
+                      </button>
+                      <button type="button" class="btn btn-primary mr-2" (click)="generateLink(room.code)">
+                        <i class="fa fa-link" aria-hidden="true"></i>
+                        Generate Link
+                      </button>
+                    </div>
+                    <div *ngIf="room.confirmation">
+                      <button class="btn btn-danger mr-2" (click)="room.confirmation = false">Cancel</button>
+                      <button class="btn btn-success" (click)="deleteRoom(room)">Confirm</button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+
+
+</div>
+
+
+
+<!--<h1>Dashboard</h1>
+<div class="form" *ngIf="showForm">
+  <div class="mb-5">
+    <label for="name">Name:</label>
+    <input class="form-control" type="text" placeholder="Room 1, Room 2" [(ngModel)]="room.name">
+    <div>
+      <button class="btn btn-primary" (click)="saveRoom()">Save</button>
+      <button class="btn btn-danger" (click)="showForm = false">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<button class="btn btn-primary" (click)="newRoom()">New Room</button>
+
+
+<table class='table table-striped mt-2' *ngIf="rooms">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Code</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let room of rooms">
+      <td>{{ room.id }}</td>
+      <td>{{ room.name }}</td>
+      <td>{{ room.code }}</td>
+      <td>
+        <div *ngIf="!room.confirmation">
+          <button class="btn btn-success mr-2" [routerLink]="['/room',room.code]">
+            <i class="fa fa-sign-in" aria-hidden="true"></i>
+            Enter to Room
+          </button>
+          <button class="btn btn-danger mr-2" (click)="room.confirmation = true">
+            <i class="fa fa-trash-o" aria-hidden="true"></i>
+            Delete
+          </button>
+          <button type="button" class="btn btn-primary mr-2"  (click)="generateLink(room.code)">
+            <i class="fa fa-link" aria-hidden="true"></i>
+            Generate Link
+          </button>
+        </div>
+        <div *ngIf="room.confirmation">
+          <button class="btn btn-danger mr-2" (click)="room.confirmation = false">Cancel</button>
+          <button class="btn btn-success" (click)="deleteRoom(room)">Confirm</button>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+-->

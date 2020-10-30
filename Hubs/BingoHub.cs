@@ -4,13 +4,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.SignalR;
 
-namespace project_bingo.Hubs
+namespace bingo_project.Hubs
 {
     public class BingoHub : Hub
     {
-        public void Echo(string message)
+        public async Task AddToGroup(string roomId)
         {
-            Clients.All.SendAsync("SendMessage", message);
+            await Groups.AddToGroupAsync(Context.ConnectionId, roomId);
         }
+        
+        
+       
+
+
     }
 }

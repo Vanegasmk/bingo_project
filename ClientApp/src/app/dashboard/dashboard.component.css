@@ -1,0 +1,35 @@
+
+
+body {
+    overflow: hidden;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 300;
+    color: #20356e;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.bg-primary {
+    background-color: #20356e !important;
+}
+
+
+
+
+#sidebar-container {
+    min-height: 100vh;
+}
+
+#sidebar-container .logo {
+    padding: .875rem 1.25rem;
+}
+
+#sidebar-container .menu {
+    width: 15 rem;
+}
+
+hr.sidebar-divider {
+    margin: 0 1rem 1rem;
+}
