@@ -8,5 +8,6 @@ namespace project_bingo.Models
         {
             
         }
+        public DbSet<Cardboard> Cardboards { get; set; }
     }
 }
