@@ -8,6 +8,9 @@ namespace bingo_project.Models
         {
             
         }
+        
         public DbSet<Room> Rooms { get; set; }
+        
+        public DbSet<Cardboard> Cardboards { get; set; }
     }
 }
