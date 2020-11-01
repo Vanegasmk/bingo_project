@@ -9,8 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using bingo_project.Hubs;
 using bingo_project.Models;
 using Microsoft.Extensions.Options;
-using System;
-using System.Text;
+
 
 namespace project_bingo
 {
@@ -31,9 +30,7 @@ namespace project_bingo
 
             services.AddSignalR();//Add Service SignalR
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-              .AddEntityFrameworkStores<ApplicationDbContext>()
-              .AddDefaultTokenProviders();
+            
             services.AddCors(options => options.AddPolicy("CorsPolicy", builder =>
             {
                 builder.AllowAnyMethod().AllowAnyHeader().WithOrigins("https://localhost:5001/").AllowCredentials();
@@ -47,23 +44,6 @@ namespace project_bingo
             {
                 configuration.RootPath = "ClientApp/dist";
             });
-            
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(options =>
-                 options.TokenValidationParameters = new TokenValidationParameters
-                 {
-                     ValidateIssuer = true,
-                     ValidateAudience = true,
-                     ValidateLifetime = true,
-                     ValidateIssuerSigningKey = true,
-                     ValidIssuer = "yourdomain.com",
-                     ValidAudience = "yourdomain.com",
-                     IssuerSigningKey = new SymmetricSecurityKey(
-                    Encoding.UTF8.GetBytes(Configuration["Llave_super_secreta"])),
-                     ClockSkew = TimeSpan.Zero
-                 });
-
-            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
