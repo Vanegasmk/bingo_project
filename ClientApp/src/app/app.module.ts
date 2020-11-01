@@ -12,6 +12,8 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ChatComponent } from './chat/chat.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RoomComponent } from './room/room.component';
+import { LoginComponent } from './login/login.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { RoomComponent } from './room/room.component';
     FetchDataComponent,
     ChatComponent,
     DashboardComponent,
-    RoomComponent
+    RoomComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -37,7 +40,8 @@ import { RoomComponent } from './room/room.component';
       { path:  'chat', component: ChatComponent },
       { path: 'dashboard', component: DashboardComponent },
       { path: 'room/:code', component:RoomComponent},
-    ])
+    ]),
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
