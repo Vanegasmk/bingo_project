@@ -9,7 +9,8 @@ using Microsoft.EntityFrameworkCore;
 using bingo_project.Hubs;
 using bingo_project.Models;
 using Microsoft.Extensions.Options;
-
+using System;
+using System.Text;
 
 namespace project_bingo
 {
@@ -30,7 +31,9 @@ namespace project_bingo
 
             services.AddSignalR();//Add Service SignalR
 
-            
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+              .AddEntityFrameworkStores<ApplicationDbContext>()
+              .AddDefaultTokenProviders();
             services.AddCors(options => options.AddPolicy("CorsPolicy", builder =>
             {
                 builder.AllowAnyMethod().AllowAnyHeader().WithOrigins("https://localhost:5001/").AllowCredentials();
