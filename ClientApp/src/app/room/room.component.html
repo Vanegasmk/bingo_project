@@ -1,19 +1,21 @@
 <div class="container-login100" *ngIf="showForm">
     <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
-        <form class="login100-form validate-form flex-sb flex-w">
+        <form class="login100-form validate-form flex-sb flex-w" [formGroup]="userForm" (ngSubmit)="setUser(userForm.value)">
 
-            <div class="wrap-input100 validate-input m-b-36" data-validate="Username is required">
-                <input class="input100" type="text" name="username" placeholder="Insert your username!">
+            <span *ngIf="userForm.get('user').hasError('required') && userForm.get('user').touched">Insert numeric characters</span>
+            <div class="wrap-input100 validate-input m-b-36">
+                <input class="input100" type="text" formControlName="user" placeholder="Insert your username!" required>
                 <span class="focus-input100"></span>
             </div>
             <hr>
-            <div class="wrap-input100 validate-input m-b-36" data-validate="Username is required">
-                <input class="input100" type="number" name="username" placeholder="How many cards do you want?">
+            <span *ngIf="userForm.get('cards').hasError('required') && userForm.get('cards').touched">Insert numeric characters</span>
+            <div class="wrap-input100 validate-input m-b-36">
+                <input class="input100" type="number" formControlName="cards" placeholder="How many cards do you want?" required>
                 <span class="focus-input100"></span>
             </div>
 
             <div class="container-login100-form-btn">
-                <button class="login100-form-btn" (click)= "showForm = false">
+                <button  type="submit" class="login100-form-btn">
                     Enter To Room
                 </button>
             </div>
@@ -23,6 +25,40 @@
 </div>
 
 
-<p>Dentro del juego</p>
+<div id="game">
+    <div id="image">
+        <img id="tombola" src="https://jpsenlinea.com/assets/tombola2.gif">
+    </div>
+    
+    <div id="controller">
+        <input type="submit" value="Get new number" id="selector" disabled>
+        <div id="spacer"></div>
+        <input id="number" type="text" value="27" disabled>
+        <div id="spacer"></div>
+    </div>
+    <div id="table">
+        <table class="table table-hover table-striped responsive-table">
+            <thead>
+                <th colspan="10">Selected numbers</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>s</td>
+                    <td>s</td>
+                    <td>s</td>
+                    <td>d</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<hr>
+<div id="cardboards">
 
-Tu nombre es {{loginToken}}
+</div>
