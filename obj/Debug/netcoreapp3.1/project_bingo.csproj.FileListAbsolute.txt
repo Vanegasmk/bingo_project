@@ -158,3 +158,13 @@
 /home/vanegasmk/Documentos/Proyectos/bingo_project/obj/Debug/netcoreapp3.1/project_bingo.pdb
 /home/vanegasmk/Documentos/Proyectos/bingo_project/obj/Debug/netcoreapp3.1/project_bingo.genruntimeconfig.cache
 /home/vanegasmk/Documentos/Proyectos/bingo_project/bin/Debug/netcoreapp3.1/package-lock.json
+C:\Users\jodavasi\Desktop\bingo_project\obj\Debug\netcoreapp3.1\project_bingo.csprojAssemblyReference.cache
+C:\Users\jodavasi\Desktop\bingo_project\obj\Debug\netcoreapp3.1\project_bingo.AssemblyInfoInputs.cache
+C:\Users\jodavasi\Desktop\bingo_project\obj\Debug\netcoreapp3.1\project_bingo.AssemblyInfo.cs
+C:\Users\jodavasi\Desktop\bingo_project\obj\Debug\netcoreapp3.1\project_bingo.csproj.CoreCompileInputs.cache
+C:\Users\jodavasi\Desktop\bingo_project\obj\Debug\netcoreapp3.1\project_bingo.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\jodavasi\Desktop\bingo_project\obj\Debug\netcoreapp3.1\project_bingo.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\jodavasi\Desktop\bingo_project\obj\Debug\netcoreapp3.1\project_bingo.RazorAssemblyInfo.cache
+C:\Users\jodavasi\Desktop\bingo_project\obj\Debug\netcoreapp3.1\project_bingo.RazorAssemblyInfo.cs
+C:\Users\jodavasi\Desktop\bingo_project\obj\Debug\netcoreapp3.1\project_bingo.dll
+C:\Users\jodavasi\Desktop\bingo_project\obj\Debug\netcoreapp3.1\project_bingo.pdb
