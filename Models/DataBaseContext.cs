@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using bingo_project.Models;
+
 
 namespace bingo_project.Models
 {
