@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HubConnection, HubConnectionBuilder } from "@aspnet/signalr"; // signalR Import
 import { Router, ActivatedRoute } from '@angular/router';
+import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-room',
@@ -12,11 +13,18 @@ export class RoomComponent {
   public showForm = true;
   public hubConnection: HubConnection;
   public room: string;
-  public totalCards: number;
+  
   public user : string;
+  public totalCards: number;
+  userForm: FormGroup;
 
-  constructor(private ActivatedRoute: ActivatedRoute) {
+  constructor(private ActivatedRoute: ActivatedRoute,private _builder: FormBuilder) {
+    this.userForm = this._builder.group({
+      user:["",Validators.required],
+      cards:["",Validators.compose([Validators.pattern("^[0-9]*$"),Validators.required])]
+    });
     this.builConnection();
+ 
   }
 
 
@@ -40,6 +48,16 @@ export class RoomComponent {
     })
   }
 
+  setUser(values)
+  {
+    this.user = values.user;
+    this.totalCards = values.cards;
+
+    if(this.user.length > 1 && this.totalCards >= 1)
+    { 
+      console.log("se mamo");
+    }
+  }
 
  
 
