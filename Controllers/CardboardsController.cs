@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using project_bingo.Models;
+using bingo_project.Models;
 
-namespace project_bingo.Controllers
+namespace bingo_project.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
