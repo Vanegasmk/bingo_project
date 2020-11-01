@@ -34,7 +34,7 @@ import { AppRoutingModule } from './app-routing.module';
     ClipboardModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: '', component: LoginComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path:  'chat', component: ChatComponent },
