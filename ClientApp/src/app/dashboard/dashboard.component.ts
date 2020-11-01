@@ -2,7 +2,9 @@ import { THIS_EXPR } from "@angular/compiler/src/output/output_ast";
 import { Component, Inject } from "@angular/core";
 import { Room } from "./room.interface";
 import { HttpClient } from "@angular/common/http";
-import Swal from 'sweetalert2'
+import { ClipboardService } from 'ngx-clipboard';
+import Swal from 'sweetalert2';
+
 @Component({
   selector: "app-dashboard",
   templateUrl: "./dashboard.component.html",
@@ -13,8 +15,8 @@ export class DashboardComponent {
   public room: Room;
   public showForm = false;
 
-  constructor(public http: HttpClient, @Inject("BASE_URL") public baseUrl: string) 
-  {
+  constructor(public http: HttpClient, @Inject("BASE_URL") public baseUrl: string, private clipboardService: ClipboardService) {
+
     this.getRooms();
   }
 
@@ -42,7 +44,7 @@ export class DashboardComponent {
   }
 
   deleteRoom(room: Room) { // Remove room from database
-    
+
     this.http.delete(this.baseUrl + "api/rooms/" + room.id).subscribe(
       (result) => {
         this.getRooms();
@@ -62,17 +64,32 @@ export class DashboardComponent {
   }
 
   createRandomCode()//Generates a hexadecimal code
-  { 
+  {
     var code = (Math.random() * 0xffff * 1000000).toString(16);
-    return code.slice(0,6);
+    return code.slice(0, 6);
   }
 
-  generateLink(id:string)
-  { 
+  generateLink(id: string) {
+    var url = 'https://localhost:5001/room/'  + id;
+
     Swal.fire({
-      icon: 'success',
       title: 'Link generated!',
-      text: 'https://localhost:5001/room/' + id,
-    });
+      text: 'https://localhost:5001/room/'  + id,
+      icon: 'success',
+      showCancelButton: true,
+      confirmButtonColor: '#008f39',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Copy Link'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Copied!',
+          'You have copied the link',
+          'success'
+        );
+        this.clipboardService.copyFromContent(url);
+      }
+    })
+
   }
 }
