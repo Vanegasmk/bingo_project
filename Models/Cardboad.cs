@@ -1,6 +1,6 @@
 using System;
 
-namespace project_bingo.Models
+namespace bingo_project.Models
 {
     public class Cardboard
     {
