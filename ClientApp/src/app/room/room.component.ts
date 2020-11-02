@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { HubConnection, HubConnectionBuilder } from "@aspnet/signalr"; // signalR Import
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup, FormBuilder, Validators} from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-room',
@@ -10,27 +11,28 @@ import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 })
 export class RoomComponent {
 
-  public showForm = true;
+  public showFormLogin = true;
+  public showFormGame = false;
+  public showFormAdmin = false;
+
   public hubConnection: HubConnection;
   public room: string;
-  
-  public user : string;
   public totalCards: number;
-  userForm: FormGroup;
+  public userType: string;
+  public userForm: FormGroup;
+  public totalUsers : number = 0;
 
-  constructor(private ActivatedRoute: ActivatedRoute,private _builder: FormBuilder) {
+  constructor(private ActivatedRoute: ActivatedRoute, private _builder: FormBuilder) {
     this.userForm = this._builder.group({
-      user:["",Validators.required],
-      cards:["",Validators.compose([Validators.pattern("^[0-9]*$"),Validators.required])]
+      cards: ["", Validators.compose([Validators.pattern("^[0-9]*$"), Validators.required])]
     });
     this.builConnection();
- 
+
   }
 
 
   builConnection() {
     this.hubConnection = new HubConnectionBuilder().withUrl("/room").build();
-
     this.hubConnection.start().then(() => {
       this.getCodeRoom();
       this.hubConnection.invoke("AddToGroup", this.room);
@@ -39,27 +41,43 @@ export class RoomComponent {
       .then(() => console.log("Bingo Hub Connection is start!"))
       .catch(() => console.log("Bingo Hub Connection not start"));
 
+
   }
 
   getCodeRoom() {
     this.ActivatedRoute.paramMap.subscribe(param => {
       this.room = param.get('code');
-      console.log(this.room);
-    })
+
+      if (this.userType == 'admin') {
+        this.showFormLogin = false;
+      }
+    });
   }
 
-  setUser(values)
-  {
-    this.user = values.user;
+  setNumberCards(values) {
     this.totalCards = values.cards;
 
-    if(this.user.length > 1 && this.totalCards >= 1)
-    { 
-      console.log("se mamo");
+    if (this.totalCards >= 1 && this.totalCards <= 3) {
+      this.showFormLogin = false;
+      this.showFormGame = true;
+      this.totalUsers++;
+
+    } else if (this.totalCards > 3) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'The maximum number of cartons is three!'
+      });
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'The minimum quantity of cartons must be one!'
+      });
     }
   }
 
- 
+
 
 
 }

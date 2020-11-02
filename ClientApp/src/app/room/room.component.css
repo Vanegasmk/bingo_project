@@ -584,61 +584,24 @@ html, body{
 }
 
 
-#cardboards{
-  height: 50vh;
-  width: 100%;
+
+#cardboard{
+  margin-right: 1vw;
+  margin-left:  1vw;
+  background: white;
+
 }
 
-.chekbox{
-  position: fixed;
-  top: 2%;
-  right: 1vw;
-}
-
-#check{
-  visibility: hidden;
-}
-
-#check:checked ~ .chat{
-  right:0vw;
-}
-
-.chekbox label{
-  font-size: 1.2vw;
-  
-  cursor: pointer;
-}
-
-#chat{
-  height: 92%;
-  top: 7%;
-  width: 25vw;
-  padding: 0.5%;
-  position: fixed;
-  right: -26vw;
-  border-radius: 25px 0px 0px 25px;
-  border: 1px solid black;
-  transition: 700ms;
-}
-
-nav{
+#cardboards #cardboard table tbody tr td{
+  height: 6vh;
+  width: 4vw;
+  border: 2px solid black;
   background-color: white;
+  text-align: center;
 }
 
-.content{
-  height: 78.7vh;
+#cardboards #cardboard table tbody tr td input{ 
+  height: 6vh;
+  width: 4vw;
 }
-
-.content p{
-  width: 100%;
-  border-radius: 25px;    
-  padding-left: 2%;
-  padding-right: 2%;
-  border: 1px solid lightslategray;
-  margin-top: 2%;
-  padding-left: 2%;
-  word-break: break-all;
-  line-height: 30px;
-}
-
 
