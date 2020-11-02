@@ -1,7 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { EmailValidator } from '@angular/forms';
-import { Admin } from './login.interfase';
+import { Admin } from './login-interface';
 import {AuthService} from 'src/app/auth.service';
 
 
@@ -12,24 +12,14 @@ import {AuthService} from 'src/app/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  public admin : Admin[];
-  public email: string;
-  public password: string;
-  public isAdmin = false;
-
-
-  constructor(private authService:AuthService) {
+  constructor() {
 
   }
 
   ngOnInit(): void {
   }
 
-  Login() {
-
-
-
-
+  loginUser() {
 
   }
 

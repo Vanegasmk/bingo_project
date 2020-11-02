@@ -52,19 +52,5 @@ namespace bingo_project.Controllers
             return CreatedAtAction("GetCardboard", new { id = carton.Id }, carton);
         }
 
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<Cardboard>> DeleteCardboard(long id)
-        {
-            var cardboard = await _context.Cardboards.FindAsync(id);
-            if (cardboard == null)
-            {
-                return NotFound();
-            }
-
-            _context.Cardboards.Remove(cardboard);
-            await _context.SaveChangesAsync();
-
-            return cardboard;
-        }
     }
 }
