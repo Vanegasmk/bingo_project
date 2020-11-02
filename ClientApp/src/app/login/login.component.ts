@@ -1,6 +1,9 @@
+
 import { Component, OnInit } from '@angular/core';
 import { EmailValidator } from '@angular/forms';
-import { Admin } from './login.interfase'
+import { Admin } from './login.interfase';
+import {AuthService} from 'src/app/auth.service';
+
 
 @Component({
   selector: 'app-login',
@@ -10,9 +13,12 @@ import { Admin } from './login.interfase'
 export class LoginComponent implements OnInit {
 
   public admin : Admin[];
+  public email: string;
+  public password: string;
+  public isAdmin = false;
 
 
-  constructor() {
+  constructor(private authService:AuthService) {
 
   }
 
@@ -20,6 +26,8 @@ export class LoginComponent implements OnInit {
   }
 
   Login() {
+
+
 
 
 

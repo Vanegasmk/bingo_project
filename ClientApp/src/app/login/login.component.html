@@ -18,12 +18,12 @@
                     Password
                 </span>
                 <div class="wrap-input100 validate-input m-b-12" data-validate="Password is required">
-                    <input class="input100" type="password" name="pass">
+                    <input class="input100" type="password" name="password">
                     <span class="focus-input100"></span>
                 </div>
 
                 <div class="container-login100-form-btn">
-                    <button class="login100-form-btn" [routerLink]="['/dashboard']">
+                    <button *ngIf="user" class="login100-form-btn" [routerLink]="['/dashboard']">
                         Login
                     </button>
                 </div>
