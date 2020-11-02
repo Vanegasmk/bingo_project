@@ -1,13 +1,6 @@
-<div class="container-login100" *ngIf="showForm">
+<div class="container-login100" *ngIf="showFormLogin">
     <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
-        <form class="login100-form validate-form flex-sb flex-w" [formGroup]="userForm" (ngSubmit)="setUser(userForm.value)">
-
-            <span *ngIf="userForm.get('user').hasError('required') && userForm.get('user').touched">Insert numeric characters</span>
-            <div class="wrap-input100 validate-input m-b-36">
-                <input class="input100" type="text" formControlName="user" placeholder="Insert your username!" required>
-                <span class="focus-input100"></span>
-            </div>
-            <hr>
+        <form class="login100-form validate-form flex-sb flex-w" [formGroup]="userForm" (ngSubmit)="setNumberCards(userForm.value)">
             <span *ngIf="userForm.get('cards').hasError('required') && userForm.get('cards').touched">Insert numeric characters</span>
             <div class="wrap-input100 validate-input m-b-36">
                 <input class="input100" type="number" formControlName="cards" placeholder="How many cards do you want?" required>
@@ -19,17 +12,16 @@
                     Enter To Room
                 </button>
             </div>
-
         </form>
     </div>
 </div>
 
 
-<div id="game">
+<div id="game" >
     <div id="image">
         <img id="tombola" src="https://jpsenlinea.com/assets/tombola2.gif">
     </div>
-    
+    <div>{{totalUsers}}</div>
     <div id="controller">
         <input type="submit" value="Get new number" id="selector" disabled>
         <div id="spacer"></div>
@@ -60,5 +52,136 @@
 </div>
 <hr>
 <div id="cardboards">
-
+    <div id="cardboard" style="padding: 2%; background-color: lightgreen;">
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="5" style="text-align: center; height: 7vh; font-size: 2.5vw; letter-spacing: 1.5vw; color: white; background-color: #a04000;">
+                        BINGO
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <input type="number">
+                    </td>
+                    <td>
+                        <input type="number">
+                    </td>
+                    <td>
+                        <input type="number">
+                    </td>
+                    <td>
+                        <input type="number">
+                    </td>
+                    <td>
+                        <input type="number">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="number">
+                    </td>
+                    <td>
+                        <input type="number">
+                    </td>
+                    <td>
+                        <input type="number">
+                    </td>
+                    <td>
+                        <input type="number">
+                    </td>
+                    <td>
+                        <input type="number">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="number">
+                    </td>
+                    <td>
+                        <input type="number">
+                    </td>
+                    <td>
+                        <input type="number">
+                    </td>
+                    <td>
+                        <input type="number">
+                    </td>
+                    <td>
+                        <input type="number">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="number">
+                    </td>
+                    <td>
+                        <input type="number">
+                    </td>
+                    <td>
+                        <input type="number">
+                    </td>
+                    <td>
+                        <input type="number">
+                    </td>
+                    <td>
+                        <input type="number">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="number">
+                    </td>
+                    <td>
+                        <input type="number">
+                    </td>
+                    <td>
+                        <input type="number">
+                    </td>
+                    <td>
+                        <input type="number">
+                    </td>
+                    <td>
+                        <input type="number">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="number">
+                    </td>
+                    <td>
+                        <input type="number">
+                    </td>
+                    <td>
+                        <input type="number">
+                    </td>
+                    <td>
+                        <input type="number">
+                    </td>
+                    <td>
+                        <input type="number">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="number">
+                    </td>
+                    <td>
+                        <input type="number">
+                    </td>
+                    <td>
+                        <input type="number">
+                    </td>
+                    <td>
+                        <input type="number">
+                    </td>
+                    <td>
+                        <input type="number">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
