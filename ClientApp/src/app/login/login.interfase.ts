@@ -1,7 +1,7 @@
-interface admin{
+export interface Admin{
 
-    email: string;
-    password: string;
+    Email: string;
+    Password: string;
 
 
 }

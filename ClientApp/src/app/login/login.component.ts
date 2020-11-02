@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { EmailValidator } from '@angular/forms';
+import { Admin } from './login.interfase'
 
 @Component({
   selector: 'app-login',
@@ -6,14 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  
-  
-  email:('');
-  password:('');
+
+  public admin : Admin[];
 
 
+  constructor() {
 
-  constructor() { }
+  }
 
   ngOnInit(): void {
   }
