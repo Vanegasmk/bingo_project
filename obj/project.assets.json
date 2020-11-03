@@ -9508,19 +9508,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\muril\\.nuget\\packages\\": {}
+    "/home/vanegasmk/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\muril\\Desktop\\Proyecto web 2\\bingo_project\\project_bingo.csproj",
+      "projectUniqueName": "/home/vanegasmk/Documentos/Proyectos/bingo_project/project_bingo.csproj",
       "projectName": "project_bingo",
-      "projectPath": "C:\\Users\\muril\\Desktop\\Proyecto web 2\\bingo_project\\project_bingo.csproj",
-      "packagesPath": "C:\\Users\\muril\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\muril\\Desktop\\Proyecto web 2\\bingo_project\\obj\\",
+      "projectPath": "/home/vanegasmk/Documentos/Proyectos/bingo_project/project_bingo.csproj",
+      "packagesPath": "/home/vanegasmk/.nuget/packages/",
+      "outputPath": "/home/vanegasmk/Documentos/Proyectos/bingo_project/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\muril\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/home/vanegasmk/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -9595,7 +9595,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.403/RuntimeIdentifierGraph.json"
       }
     }
   }
