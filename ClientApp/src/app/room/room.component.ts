@@ -19,6 +19,8 @@ export class RoomComponent {
   public number = 0; //nuevo numero
   public list = []; //lista numeros salidos
 
+  public mamoski = true;
+
   public hubConnection: HubConnection;//variable for connection with signalr
   public room: string;//variable to set room code
   public totalCards: number;//variable to set amount of player cards
@@ -32,11 +34,6 @@ export class RoomComponent {
     this.builConnection();
 
     this.getList();
-    
-
-
-
-
   }
 
   getList() {
@@ -62,6 +59,7 @@ export class RoomComponent {
         this.sendMetadataNumber(element);
       });
     });  
+    
   }
 
 
