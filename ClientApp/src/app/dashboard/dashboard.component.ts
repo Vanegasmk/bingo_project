@@ -14,6 +14,8 @@ export class DashboardComponent {
   public rooms: Room[];
   public room: Room;
   public showForm = false;
+  public admin = JSON.parse(localStorage.getItem("admin"));
+
 
   constructor(public http: HttpClient, @Inject("BASE_URL") public baseUrl: string, private clipboardService: ClipboardService) {
 
@@ -92,5 +94,10 @@ export class DashboardComponent {
       }
     })
 
+  }
+
+  removeLocalStorage()//Remove 'Admin' localstorage
+  { 
+    localStorage.removeItem("admin");
   }
 }

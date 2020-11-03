@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { HubConnection, HubConnectionBuilder } from "@aspnet/signalr"; // signalR Import
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { Cardboard } from './cardboard.interface.';
 import Swal from 'sweetalert2';
 import { NumberService } from '../Services/number.service';
 
@@ -12,25 +14,33 @@ import { NumberService } from '../Services/number.service';
 })
 export class RoomComponent {
 
-  public showFormLogin = true;//show div from login
+  public showFormLogin = true;
   public showFormGame = false;//show div from cards
   public showFormAdmin = false;//show div from admin
   
   public number = 0; //nuevo numero
   public list = []; //lista numeros salidos
 
-  public mamoski = true;
-
+  public showFormUser = false;//show div from
+  
   public hubConnection: HubConnection;//variable for connection with signalr
   public room: string;//variable to set room code
   public totalCards: number;//variable to set amount of player cards
   public userForm: FormGroup;//fromGroup object
-  public usersOnline  : number = 0;//variable to set usersOnline
+  public usersOnline: number = 0;//variable to set usersOnline
 
-  constructor(private ActivatedRoute: ActivatedRoute, private _builder: FormBuilder,  private numServices: NumberService,) {
+  public cardboards = [];//Array of cards
+
+  constructor(
+    private ActivatedRoute: ActivatedRoute,
+    private _builder: FormBuilder,
+    private numServices: NumberService,
+    public http: HttpClient, @Inject('BASE_URL') public baseUrl: string
+  ) {
     this.userForm = this._builder.group({
       cards: ["", Validators.compose([Validators.pattern("^[0-9]*$"), Validators.required])]
     });
+    this.showForms();
     this.builConnection();
 
     this.getList();
@@ -67,7 +77,7 @@ export class RoomComponent {
   builConnection() {//connection generated signalr
     this.hubConnection = new HubConnectionBuilder().withUrl("/room").build();
 
-    this.hubConnection.on("SendCount",(msg) => {
+    this.hubConnection.on("SendCount", (msg) => {
       this.usersOnline = this.usersOnline + msg;
     });
 
@@ -95,9 +105,10 @@ export class RoomComponent {
     this.totalCards = values.cards;
 
     if (this.totalCards >= 1 && this.totalCards <= 3) {
-      this.showFormLogin = false;
-      this.showFormGame = true;
       this.sendCount();
+      this.generateTotalCarboards(values.cards);
+      this.showFormGame = true;
+      this.showFormLogin = false;
     } else if (this.totalCards > 3) {
       Swal.fire({
         icon: 'error',
@@ -113,14 +124,43 @@ export class RoomComponent {
     }
   }
 
-  sendCount(){
-    this.hubConnection.invoke("SendCountToGroup",this.room,1);
+  sendCount() {//add a user when they enter the game
+    this.hubConnection.invoke("SendCountToGroup", this.room, 1);
   }
 
+  getCardboard(id: number) {
+    var data = [];
+    this.http.get<Cardboard>(this.baseUrl + 'api/cardboards/' + id).subscribe(result => {
+       data.push(result);
+    }, error => console.error(error));
+    this.cardboards.push(data);
+  }
 
   sendMetadataNumber(value){
     this.hubConnection.invoke("SendNumbersBingo",this.room,value);
   }
+  
+  generateTotalCarboards(totalcarboards: number) {
+    for (let i = 0; i < totalcarboards; i++) {
+      var id = Math.floor(Math.random() * (11 - 1) + 1);
+      console.log(id);
+      this.getCardboard(id);
+    }
+    console.log(this.cardboards[0]);
+  }
 
-
+  showForms()//
+  { 
+    if("admin" in localStorage)
+    { 
+      this.showFormLogin = false;
+      this.showFormAdmin =  true;
+      this.showFormUser = false;
+    }else{
+      this.showFormLogin = true;
+      this.showFormUser = true;
+      this.showFormAdmin = false;
+    }
+  }
+  
 }
