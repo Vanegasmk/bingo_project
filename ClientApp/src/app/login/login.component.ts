@@ -35,6 +35,7 @@ export class LoginComponent {
       }else if(this.temp != null && this.temp.email ==this.admin.email && this.temp.password == this.admin.password){
         this.admin=this.temp;
         this.message="Log in realizado con exito";
+        localStorage.setItem('admin', JSON.stringify(this.admin));
         this.location.go("../dashboard");
         window.location.reload();
       }

@@ -35,6 +35,10 @@ namespace project_bingo.Migrations
                         .HasColumnName("password")
                         .HasColumnType("text");
 
+                    b.Property<string>("UserType")
+                        .HasColumnName("user_type")
+                        .HasColumnType("text");
+
                     b.HasKey("Id")
                         .HasName("pk_admins");
 
