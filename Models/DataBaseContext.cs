@@ -13,6 +13,9 @@ namespace bingo_project.Models
         
         public DbSet<Cardboard> Cardboards { get; set; }
 
+<<<<<<< HEAD
         public DbSet<Admin> Admins { get; set; }
+=======
+>>>>>>> changes
     }
 }

@@ -10,10 +10,10 @@ namespace bingo_project.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class cardboardsController : ControllerBase
+    public class CardboardsController : ControllerBase
     {
         private readonly DataBaseContext _context;
-        public cardboardsController(DataBaseContext context)
+        public CardboardsController(DataBaseContext context)
         {
             _context = context;
         }

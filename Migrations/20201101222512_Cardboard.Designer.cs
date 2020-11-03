@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using bingo_project.Models;
@@ -9,9 +10,10 @@ using bingo_project.Models;
 namespace project_bingo.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    partial class DataBaseContextModelSnapshot : ModelSnapshot
+    [Migration("20201101222512_Cardboard")]
+    partial class Cardboard
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -19,35 +21,6 @@ namespace project_bingo.Migrations
                 .HasAnnotation("ProductVersion", "3.1.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
-<<<<<<< HEAD
-            modelBuilder.Entity("bingo_project.Models.Admin", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("id")
-                        .HasColumnType("bigint")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-                    b.Property<string>("Email")
-                        .HasColumnName("email")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Password")
-                        .HasColumnName("password")
-                        .HasColumnType("text");
-
-                    b.Property<string>("UserType")
-                        .HasColumnName("user_type")
-                        .HasColumnType("text");
-
-                    b.HasKey("Id")
-                        .HasName("pk_admins");
-
-                    b.ToTable("admins");
-                });
-
-=======
->>>>>>> changes
             modelBuilder.Entity("bingo_project.Models.Cardboard", b =>
                 {
                     b.Property<long>("Id")
@@ -56,11 +29,7 @@ namespace project_bingo.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-<<<<<<< HEAD
-                    b.Property<int[]>("Numbers")
-=======
                     b.Property<int[]>("numbers")
->>>>>>> changes
                         .HasColumnName("numbers")
                         .HasColumnType("integer[]");
 

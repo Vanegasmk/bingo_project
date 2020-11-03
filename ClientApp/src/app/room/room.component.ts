@@ -11,32 +11,34 @@ import Swal from 'sweetalert2';
 })
 export class RoomComponent {
 
-  public showFormLogin = true;
-  public showFormGame = false;
-  public showFormAdmin = false;
+  public showFormLogin = true;//show div from login
+  public showFormGame = false;//show div from cards
+  public showFormAdmin = false;//show div from admin
 
-  public hubConnection: HubConnection;
-  public room: string;
-  public totalCards: number;
-  public userType: string;
-  public userForm: FormGroup;
-  public totalUsers : number = 0;
+  public hubConnection: HubConnection;//variable for connection with signalr
+  public room: string;//variable to set room code
+  public totalCards: number;//variable to set amount of player cards
+  public userForm: FormGroup;//fromGroup object
+  public usersOnline  : number = 0;//variable to set usersOnline
 
   constructor(private ActivatedRoute: ActivatedRoute, private _builder: FormBuilder) {
     this.userForm = this._builder.group({
       cards: ["", Validators.compose([Validators.pattern("^[0-9]*$"), Validators.required])]
     });
     this.builConnection();
-
   }
 
 
-  builConnection() {
+  builConnection() {//connection generated signalr
     this.hubConnection = new HubConnectionBuilder().withUrl("/room").build();
+
+    this.hubConnection.on("SendCount",(msg) => {
+      this.usersOnline = this.usersOnline + msg;
+    });
+    
     this.hubConnection.start().then(() => {
       this.getCodeRoom();
       this.hubConnection.invoke("AddToGroup", this.room);
-
     })
       .then(() => console.log("Bingo Hub Connection is start!"))
       .catch(() => console.log("Bingo Hub Connection not start"));
@@ -44,24 +46,19 @@ export class RoomComponent {
 
   }
 
-  getCodeRoom() {
+  getCodeRoom() {//function to get room code with ActivatedRoute
     this.ActivatedRoute.paramMap.subscribe(param => {
       this.room = param.get('code');
-
-      if (this.userType == 'admin') {
-        this.showFormLogin = false;
-      }
     });
   }
 
-  setNumberCards(values) {
+  setNumberCards(values) {//function to get the number of cards per user
     this.totalCards = values.cards;
 
     if (this.totalCards >= 1 && this.totalCards <= 3) {
       this.showFormLogin = false;
       this.showFormGame = true;
-      this.totalUsers++;
-
+      this.sendCount();
     } else if (this.totalCards > 3) {
       Swal.fire({
         icon: 'error',
@@ -76,6 +73,11 @@ export class RoomComponent {
       });
     }
   }
+
+  sendCount(){
+    this.hubConnection.invoke("SendCountToGroup",this.room,1);
+  }
+
 
 
 
