@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\muril\\Desktop\\Proyecto web 2\\bingo_project\\project_bingo.csproj": {}
+    "C:\\Users\\jodavasi\\Desktop\\bingo_project\\project_bingo.csproj": {}
   },
   "projects": {
-    "C:\\Users\\muril\\Desktop\\Proyecto web 2\\bingo_project\\project_bingo.csproj": {
+    "C:\\Users\\jodavasi\\Desktop\\bingo_project\\project_bingo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\muril\\Desktop\\Proyecto web 2\\bingo_project\\project_bingo.csproj",
+        "projectUniqueName": "C:\\Users\\jodavasi\\Desktop\\bingo_project\\project_bingo.csproj",
         "projectName": "project_bingo",
-        "projectPath": "C:\\Users\\muril\\Desktop\\Proyecto web 2\\bingo_project\\project_bingo.csproj",
-        "packagesPath": "C:\\Users\\muril\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\muril\\Desktop\\Proyecto web 2\\bingo_project\\obj\\",
+        "projectPath": "C:\\Users\\jodavasi\\Desktop\\bingo_project\\project_bingo.csproj",
+        "packagesPath": "C:\\Users\\jodavasi\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jodavasi\\Desktop\\bingo_project\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\muril\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\jodavasi\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
