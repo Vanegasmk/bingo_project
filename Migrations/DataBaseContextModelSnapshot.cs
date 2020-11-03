@@ -19,7 +19,6 @@ namespace project_bingo.Migrations
                 .HasAnnotation("ProductVersion", "3.1.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
-<<<<<<< HEAD
             modelBuilder.Entity("bingo_project.Models.Admin", b =>
                 {
                     b.Property<long>("Id")
@@ -46,8 +45,6 @@ namespace project_bingo.Migrations
                     b.ToTable("admins");
                 });
 
-=======
->>>>>>> changes
             modelBuilder.Entity("bingo_project.Models.Cardboard", b =>
                 {
                     b.Property<long>("Id")
@@ -56,11 +53,7 @@ namespace project_bingo.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-<<<<<<< HEAD
                     b.Property<int[]>("Numbers")
-=======
-                    b.Property<int[]>("numbers")
->>>>>>> changes
                         .HasColumnName("numbers")
                         .HasColumnType("integer[]");
 
@@ -68,6 +61,24 @@ namespace project_bingo.Migrations
                         .HasName("pk_cardboards");
 
                     b.ToTable("cardboards");
+                });
+
+            modelBuilder.Entity("bingo_project.Models.Numero", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("id")
+                        .HasColumnType("bigint")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<int>("Num")
+                        .HasColumnName("num")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id")
+                        .HasName("pk_numeros");
+
+                    b.ToTable("numeros");
                 });
 
             modelBuilder.Entity("bingo_project.Models.Room", b =>

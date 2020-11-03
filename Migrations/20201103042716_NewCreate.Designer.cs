@@ -10,8 +10,8 @@ using bingo_project.Models;
 namespace project_bingo.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20201102181133_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20201103042716_NewCreate")]
+    partial class NewCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -37,6 +37,10 @@ namespace project_bingo.Migrations
                         .HasColumnName("password")
                         .HasColumnType("text");
 
+                    b.Property<string>("UserType")
+                        .HasColumnName("user_type")
+                        .HasColumnType("text");
+
                     b.HasKey("Id")
                         .HasName("pk_admins");
 
@@ -59,6 +63,24 @@ namespace project_bingo.Migrations
                         .HasName("pk_cardboards");
 
                     b.ToTable("cardboards");
+                });
+
+            modelBuilder.Entity("bingo_project.Models.Numero", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("id")
+                        .HasColumnType("bigint")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<int>("Num")
+                        .HasColumnName("num")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id")
+                        .HasName("pk_numeros");
+
+                    b.ToTable("numeros");
                 });
 
             modelBuilder.Entity("bingo_project.Models.Room", b =>

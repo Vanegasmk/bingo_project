@@ -16,7 +16,8 @@ export class RoomComponent {
   public showFormLogin = true;//show div from login
   public showFormGame = false;//show div from cards
   public showFormAdmin = false;//show div from admin
-
+  public number;
+  public list = [];
   public hubConnection: HubConnection;//variable for connection with signalr
   public room: string;//variable to set room code
   public totalCards: number;//variable to set amount of player cards
@@ -35,6 +36,14 @@ export class RoomComponent {
       cards: ["", Validators.compose([Validators.pattern("^[0-9]*$"), Validators.required])]
     });
     this.builConnection();
+  }
+
+  getNewNumber() {
+    var time;
+    time = Math.floor(Math.random()*75+1)+1;
+    this.number = time;
+    this.list.push(time);
+    return console.log(this.list);
   }
 
 

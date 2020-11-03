@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace project_bingo.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class NewCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,7 +15,8 @@ namespace project_bingo.Migrations
                     id = table.Column<long>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     email = table.Column<string>(nullable: true),
-                    password = table.Column<string>(nullable: true)
+                    password = table.Column<string>(nullable: true),
+                    user_type = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -33,6 +34,19 @@ namespace project_bingo.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("pk_cardboards", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "numeros",
+                columns: table => new
+                {
+                    id = table.Column<long>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    num = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("pk_numeros", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -57,6 +71,9 @@ namespace project_bingo.Migrations
 
             migrationBuilder.DropTable(
                 name: "cardboards");
+
+            migrationBuilder.DropTable(
+                name: "numeros");
 
             migrationBuilder.DropTable(
                 name: "rooms");
