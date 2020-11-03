@@ -1,5 +1,5 @@
 {
-  "FilePath": "c:\\Users\\muril\\Desktop\\Proyecto web 2\\bingo_project\\project_bingo.csproj",
+  "FilePath": "c:\\Users\\jodavasi\\Desktop\\bingo_project\\project_bingo.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "3.0",
@@ -14447,13 +14447,13 @@
   "RootNamespace": "project_bingo",
   "Documents": [
     {
-      "FilePath": "c:\\Users\\muril\\Desktop\\Proyecto web 2\\bingo_project\\Pages\\_ViewImports.cshtml",
-      "TargetPath": "Pages\\_ViewImports.cshtml",
+      "FilePath": "c:\\Users\\jodavasi\\Desktop\\bingo_project\\Pages\\Error.cshtml",
+      "TargetPath": "Pages\\Error.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\muril\\Desktop\\Proyecto web 2\\bingo_project\\Pages\\Error.cshtml",
-      "TargetPath": "Pages\\Error.cshtml",
+      "FilePath": "c:\\Users\\jodavasi\\Desktop\\bingo_project\\Pages\\_ViewImports.cshtml",
+      "TargetPath": "Pages\\_ViewImports.cshtml",
       "FileKind": "mvc"
     }
   ],

@@ -44,9 +44,9 @@
         <img id="tombola" src="https://jpsenlinea.com/assets/tombola2.gif">
     </div>
     <div id="controller">
-        <input type="submit" value="Get new number" id="selector" (click)="getNewNumber()">
+        <input type="submit" value="Get new number" id="selector" (click)="obtain()">
         <div id="spacer"></div>
-        <input id="number" type="text" disabled value="{{number}}">
+        <input id="number" type="text" disabled value="{{list[list.length-1]}}">
         <div id="spacer"></div>
     </div>
     <div id="table">
@@ -55,7 +55,7 @@
                 <th colspan="10">Selected numbers</th>
             </thead>
             <tbody>
-                <tr *ngFor="let lists of list">
+                <tr *ngFor="let lists of list.slice().reverse()">
                     <td><p class="list-item">{{lists}}</p></td>
                    
                 </tr>
@@ -172,5 +172,3 @@
         </div>
     </div>
 </div>
-
--->

@@ -5,6 +5,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Cardboard } from './cardboard.interface.';
 import Swal from 'sweetalert2';
+import { NumberService } from '../Services/number.service';
 
 @Component({
   selector: 'app-room',
@@ -16,10 +17,12 @@ export class RoomComponent {
   public showFormLogin = true;
   public showFormGame = false;//show div from cards
   public showFormAdmin = false;//show div from admin
+  
+  public number = 0; //nuevo numero
+  public list = []; //lista numeros salidos
+
   public showFormUser = false;//show div from
   
-  public number;
-  public list = [];
   public hubConnection: HubConnection;//variable for connection with signalr
   public room: string;//variable to set room code
   public totalCards: number;//variable to set amount of player cards
@@ -31,6 +34,7 @@ export class RoomComponent {
   constructor(
     private ActivatedRoute: ActivatedRoute,
     private _builder: FormBuilder,
+    private numServices: NumberService,
     public http: HttpClient, @Inject('BASE_URL') public baseUrl: string
   ) {
     this.userForm = this._builder.group({
@@ -38,15 +42,36 @@ export class RoomComponent {
     });
     this.showForms();
     this.builConnection();
+
+    this.getList();
+  }
+
+  getList() {
+    this.list = [];
+    this.numServices.getListOfNum().subscribe(result => {
+      result.forEach(element => {
+        this.list.push(element);
+      });
+    });
+
+  }
+
+
+  obtain(){
+    this.getNewNumber();
   }
 
   getNewNumber() {
-    var time;
-    time = Math.floor(Math.random() * 75 + 1) + 1;
-    this.number = time;
-    this.list.push(time);
-    return console.log(this.list);
+    this.list = [];
+    this.numServices.listOfNums().subscribe(result => {
+      result.forEach(element => {
+        this.list.push(element);
+        this.sendMetadataNumber(element);
+      });
+    });  
+    
   }
+
 
 
   builConnection() {//connection generated signalr
@@ -56,6 +81,10 @@ export class RoomComponent {
       this.usersOnline = this.usersOnline + msg;
     });
 
+    this.hubConnection.on("SendNumbers", (msg) => {
+      this.list.push(msg);
+    });
+    
     this.hubConnection.start().then(() => {
       this.getCodeRoom();
       this.hubConnection.invoke("AddToGroup", this.room);
@@ -107,6 +136,10 @@ export class RoomComponent {
     this.cardboards.push(data);
   }
 
+  sendMetadataNumber(value){
+    this.hubConnection.invoke("SendNumbersBingo",this.room,value);
+  }
+  
   generateTotalCarboards(totalcarboards: number) {
     for (let i = 0; i < totalcarboards; i++) {
       var id = Math.floor(Math.random() * (11 - 1) + 1);
@@ -118,7 +151,6 @@ export class RoomComponent {
 
   showForms()//
   { 
-
     if("admin" in localStorage)
     { 
       this.showFormLogin = false;

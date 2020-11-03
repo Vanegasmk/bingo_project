@@ -27,7 +27,7 @@ namespace bingo_project.Controllers
         } 
 
         [HttpGet("{email}/{password}")]
-        public async Task<ActionResult<Admin>> GetAdmin(string email, string password)
+        public async Task<ActionResult<Admin>>GetAdmin(string email, string password)
         {
             var admin = _context.Admins.Where(x => x.Email == email).FirstOrDefault();
                 if (admin == null)
@@ -45,12 +45,12 @@ namespace bingo_project.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Admin>> PostNumero(Admin admin)
+        public async Task<ActionResult<Admin>> PostAdmin(Admin admin)
         {
             _context.Admins.Add(admin);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetNumero", new { id = admin.Id }, admin);
+            return CreatedAtAction("GetAdmin", new { id = admin.Id }, admin);
         }
     
     }

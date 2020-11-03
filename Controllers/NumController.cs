@@ -13,50 +13,75 @@ namespace bingo_project.Controllers
     public class NumerosController : ControllerBase
     {
         private readonly DataBaseContext _context;
+        public static Numero[] numerosLista = new Numero[75];
         public NumerosController(DataBaseContext context)
         {
             _context = context;
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Numero>>> GetCardboards()
+        public async Task<ActionResult<List<int>>> GetNumbers()
         {
-            return await _context.Numeros.ToListAsync();
+            List<int> newList = new List<int>();
+            var listdb = await _context.Numeros.ToListAsync();
+            foreach (var nu in listdb)
+            {
+                newList.Add(nu.Num);
+            }
+
+            return newList;
+
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Numero>> GetNumero(long id)
-        {
-            var numero = await _context.Numeros.FindAsync(id);
-            if (numero == null)
-            {
-                return NotFound();
-            }
-            return numero;
-        }
+
 
         [HttpPost]
-        public async Task<ActionResult<Numero>> PostNumero(Numero numero)
+        public async Task<ActionResult<List<int>>> PostNumero()
         {
-            _context.Numeros.Add(numero);
-            await _context.SaveChangesAsync();
+            var repeat = false;
+            List<int> newList = new List<int>();
+            Numero nuevoRandom = new Numero();
+            var listdb = await _context.Numeros.ToListAsync(); //lista de la bd
 
-            return CreatedAtAction("GetNumero", new { id = numero.Id }, numero);
+            foreach (var nu in listdb)
+            {
+                newList.Add(nu.Num);
+            }
+
+            while (repeat == false)
+            {
+                Random rnd = new Random();
+                int random = rnd.Next(1, 75);
+
+                if (!newList.Contains(random))
+                {
+                    nuevoRandom.Num = random;
+                    _context.Numeros.Add(nuevoRandom);
+                    await _context.SaveChangesAsync();
+                    newList.Add(random);
+                    repeat = true;
+                }
+                else
+                {
+                    repeat = false;
+                }
+            }
+
+            return newList;
         }
-
+        
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Numero>> DeleteNum(long id)
+        public async Task<ActionResult<Numero>> DeleteNumero(long id)
         {
-            var room = await _context.Numeros.FindAsync(id);
-            if (room == null)
+            var animal = await _context.Numeros.FindAsync(id);
+            if (animal == null)
             {
                 return NotFound();
             }
-
-            _context.Numeros.Remove(room);
+            _context.Numeros.Remove(animal);
             await _context.SaveChangesAsync();
 
-            return room;
+            return animal;
         }
     }
 }
