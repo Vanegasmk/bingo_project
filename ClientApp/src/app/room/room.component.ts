@@ -3,6 +3,8 @@ import { HubConnection, HubConnectionBuilder } from "@aspnet/signalr"; // signal
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { NumberService } from '../Services/number.service';
+
 
 @Component({
   selector: 'app-room',
@@ -14,27 +16,33 @@ export class RoomComponent {
   public showFormLogin = true;//show div from login
   public showFormGame = false;//show div from cards
   public showFormAdmin = false;//show div from admin
+  
   public number;
   public list = [];
+
   public hubConnection: HubConnection;//variable for connection with signalr
   public room: string;//variable to set room code
   public totalCards: number;//variable to set amount of player cards
   public userForm: FormGroup;//fromGroup object
   public usersOnline  : number = 0;//variable to set usersOnline
 
-  constructor(private ActivatedRoute: ActivatedRoute, private _builder: FormBuilder) {
+  constructor(private ActivatedRoute: ActivatedRoute, private _builder: FormBuilder,  private numServices: NumberService,) {
     this.userForm = this._builder.group({
       cards: ["", Validators.compose([Validators.pattern("^[0-9]*$"), Validators.required])]
     });
     this.builConnection();
+
   }
 
   getNewNumber() {
-    var time;
-    time = Math.floor(Math.random()*75+1)+1;
-    this.number = time;
-    this.list.push(time);
-    return console.log(this.list);
+    this.list = [];
+    this.numServices.listOfNums().subscribe(result => {
+      result.forEach(element => {
+        this.list.push(element);
+      });
+    });
+    
+    // console.log(this.list.);
   }
 
 

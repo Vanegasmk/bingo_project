@@ -13,6 +13,7 @@ namespace bingo_project.Controllers
     public class NumerosController : ControllerBase
     {
         private readonly DataBaseContext _context;
+        public static Numero[] numerosLista = new Numero[75];
         public NumerosController(DataBaseContext context)
         {
             _context = context;
@@ -24,39 +25,40 @@ namespace bingo_project.Controllers
             return await _context.Numeros.ToListAsync();
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Numero>> GetNumero(long id)
-        {
-            var numero = await _context.Numeros.FindAsync(id);
-            if (numero == null)
-            {
-                return NotFound();
-            }
-            return numero;
-        }
+
 
         [HttpPost]
-        public async Task<ActionResult<Numero>> PostNumero(Numero numero)
+        public async Task<ActionResult<List<int>>> PostNumero()
         {
-            _context.Numeros.Add(numero);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetNumero", new { id = numero.Id }, numero);
-        }
-
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<Numero>> DeleteNum(long id)
-        {
-            var room = await _context.Numeros.FindAsync(id);
-            if (room == null)
+            var repeat = false;
+            List<int> newList = new List<int>();
+            Numero nuevoRandom = new Numero();
+            var listdb = await _context.Numeros.ToListAsync(); //lista de la bd
+            
+            foreach (var nu in listdb)
             {
-                return NotFound();
+               newList.Add(nu.Num);
             }
 
-            _context.Numeros.Remove(room);
-            await _context.SaveChangesAsync();
+            while (repeat == false)
+            {
+                Random rnd = new Random();
+                int random = rnd.Next(1, 75);
 
-            return room;
+                if(!newList.Contains(random)){
+                    nuevoRandom.Num = random;
+                    _context.Numeros.Add(nuevoRandom);
+                    await _context.SaveChangesAsync();
+                    newList.Add(random);
+                    repeat = true;
+                }else{
+                    repeat = false;
+                }
+            }
+
+            return newList;
         }
+
+
     }
 }
