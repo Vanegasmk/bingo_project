@@ -1,7 +1,7 @@
+import { LocationChangeEvent } from "@angular/common";
+
 export interface Admin{
-
-    Email: string;
-    Password: string;
-
-
+    id: number;
+    email: string;
+    password: string;
 }

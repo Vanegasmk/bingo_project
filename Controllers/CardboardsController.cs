@@ -39,13 +39,13 @@ namespace bingo_project.Controllers
         public async Task<ActionResult<Cardboard>> PostCardboard()
         {
             Cardboard carton = new Cardboard();
-            carton.numbers = new int[5];
+            carton.Numbers = new int[5];
             var random = new Random();
             HashSet<int> numbers = new HashSet<int>();
             while (numbers.Count < 25) {
                 numbers.Add(random.Next(1, 49));
             }
-            carton.numbers=System.Linq.Enumerable.ToArray(numbers);
+            carton.Numbers=System.Linq.Enumerable.ToArray(numbers);
             _context.Cardboards.Add(carton);
             await _context.SaveChangesAsync(); 
 

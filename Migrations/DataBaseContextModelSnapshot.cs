@@ -19,6 +19,28 @@ namespace project_bingo.Migrations
                 .HasAnnotation("ProductVersion", "3.1.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
+            modelBuilder.Entity("bingo_project.Models.Admin", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("id")
+                        .HasColumnType("bigint")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("Email")
+                        .HasColumnName("email")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Password")
+                        .HasColumnName("password")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id")
+                        .HasName("pk_admins");
+
+                    b.ToTable("admins");
+                });
+
             modelBuilder.Entity("bingo_project.Models.Cardboard", b =>
                 {
                     b.Property<long>("Id")
@@ -27,7 +49,7 @@ namespace project_bingo.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<int[]>("numbers")
+                    b.Property<int[]>("Numbers")
                         .HasColumnName("numbers")
                         .HasColumnType("integer[]");
 
