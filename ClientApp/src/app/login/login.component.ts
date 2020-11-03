@@ -27,14 +27,12 @@ export class LoginComponent {
 
   constructor(public http: HttpClient, @Inject('BASE_URL') public baseUrl: string, private location: Location) {}
 
-  async auth(){
+  auth(){
     this.http.get<Admin>(this.baseUrl + 'api/admin/'+this.admin.email+"/"+this.admin.password).subscribe(result => {
       this.temp = result;
-      if (this.temp.email != this.admin.email) {
+      if (this.temp.email != this.admin.email || this.temp.password == "Contrseña invalida") {
         this.message="Ha ocurrido un error, por favor revise sus datos";
-      }else if (this.temp.password == "Contrseña invalida") {
-        this.message="Contrseña invalida, inténtelo de nuevo";
-      } else if(this.temp != null && this.temp.email ==this.admin.email && this.temp.password == this.admin.password){
+      }else if(this.temp != null && this.temp.email ==this.admin.email && this.temp.password == this.admin.password){
         this.admin=this.temp;
         this.message="Log in realizado con exito";
         this.location.go("../dashboard");
