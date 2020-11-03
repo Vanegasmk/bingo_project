@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Inject} from '@angular/core';
 import { HubConnection, HubConnectionBuilder } from "@aspnet/signalr"; // signalR Import
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { Cardboard } from './cardboard.interface.';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -21,7 +23,14 @@ export class RoomComponent {
   public userForm: FormGroup;//fromGroup object
   public usersOnline  : number = 0;//variable to set usersOnline
 
-  constructor(private ActivatedRoute: ActivatedRoute, private _builder: FormBuilder) {
+  public cardboards: Cardboard[];//Array of cards
+  public cardboard: Cardboard;//Object of cards
+
+  constructor(
+    private ActivatedRoute: ActivatedRoute,
+    private _builder: FormBuilder,
+    public http: HttpClient, @Inject('BASE_URL') public baseUrl: string
+    ){
     this.userForm = this._builder.group({
       cards: ["", Validators.compose([Validators.pattern("^[0-9]*$"), Validators.required])]
     });
@@ -74,12 +83,18 @@ export class RoomComponent {
     }
   }
 
-  sendCount(){
+  sendCount(){//add a user when they enter the game
     this.hubConnection.invoke("SendCountToGroup",this.room,1);
   }
 
+  getCardboard(id:number){
+    this.http.get<Cardboard>(this.baseUrl + 'api/cardboards/' + id).subscribe(result => {
+      this.cardboards.push(this.cardboard = result);
+    }, error => console.error(error));
+  }
 
-
-
+  generateTotalCarboards(totalcarboards:number){
+    
+  }
 
 }
