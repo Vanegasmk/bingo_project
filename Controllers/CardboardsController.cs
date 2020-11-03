@@ -4,16 +4,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using project_bingo.Models;
+using bingo_project.Models;
 
-namespace project_bingo.Controllers
+namespace bingo_project.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class cardboardsController : ControllerBase
+    public class CardboardsController : ControllerBase
     {
         private readonly DataBaseContext _context;
-        public cardboardsController(DataBaseContext context)
+        public CardboardsController(DataBaseContext context)
         {
             _context = context;
         }
