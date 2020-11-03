@@ -69,12 +69,13 @@ export class DashboardComponent {
     return code.slice(0, 6);
   }
 
-  generateLink(id: string) {
-    var url = 'https://localhost:5001/room/'  + id;
+  generateLink(id: string) //Generate link for room
+  {
+    var url = 'https://localhost:5001/room/' + id;
 
     Swal.fire({
       title: 'Link generated!',
-      text: 'https://localhost:5001/room/'  + id,
+      text: 'https://localhost:5001/room/' + id,
       icon: 'success',
       showCancelButton: true,
       confirmButtonColor: '#008f39',
