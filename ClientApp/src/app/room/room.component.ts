@@ -17,8 +17,8 @@ export class RoomComponent {
   public showFormGame = false;//show div from cards
   public showFormAdmin = false;//show div from admin
   
-  public number;
-  public list = [];
+  public number; //nuevo numero
+  public list = []; //lista numeros salidos
 
   public hubConnection: HubConnection;//variable for connection with signalr
   public room: string;//variable to set room code
