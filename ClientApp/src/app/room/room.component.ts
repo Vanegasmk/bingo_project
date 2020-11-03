@@ -29,7 +29,13 @@ export class RoomComponent {
   public userForm: FormGroup;//fromGroup object
   public usersOnline: number = 0;//variable to set usersOnline
 
-  public cardboards = [];//Array of cards
+  public cardboards = {id: 0, numbers: []};//Array of cards
+
+
+  public list1 = []; //lista bingo
+
+  public isContains: boolean;
+
 
   constructor(
     private ActivatedRoute: ActivatedRoute,
@@ -40,6 +46,7 @@ export class RoomComponent {
     this.userForm = this._builder.group({
       cards: ["", Validators.compose([Validators.pattern("^[0-9]*$"), Validators.required])]
     });
+    
     this.showForms();
     this.builConnection();
 
@@ -53,7 +60,6 @@ export class RoomComponent {
         this.list.push(element);
       });
     });
-
   }
 
 
@@ -122,6 +128,7 @@ export class RoomComponent {
         text: 'The minimum quantity of cartons must be one!'
       });
     }
+    this.daniel();
   }
 
   sendCount() {//add a user when they enter the game
@@ -129,12 +136,28 @@ export class RoomComponent {
   }
 
   getCardboard(id: number) {
-    var data = [];
     this.http.get<Cardboard>(this.baseUrl + 'api/cardboards/' + id).subscribe(result => {
-       data.push(result);
+      this.cardboards.id = result.id;
+      this.cardboards.numbers = result.numbers;
+      result.numbers.forEach(element => {
+        this.list1.push(element);
+      });
     }, error => console.error(error));
-    this.cardboards.push(data);
+    console.log();
+  
   }
+
+
+
+  daniel() {
+    console.log(this.list1);
+    // this.cardboards.numbers.forEach(element => {
+    //   console.log(element);
+    // });
+      
+    }
+  
+
 
   sendMetadataNumber(value){
     this.hubConnection.invoke("SendNumbersBingo",this.room,value);
@@ -143,10 +166,9 @@ export class RoomComponent {
   generateTotalCarboards(totalcarboards: number) {
     for (let i = 0; i < totalcarboards; i++) {
       var id = Math.floor(Math.random() * (11 - 1) + 1);
-      console.log(id);
+      // console.log(id);
       this.getCardboard(id);
     }
-    console.log(this.cardboards[0]);
   }
 
   showForms()//

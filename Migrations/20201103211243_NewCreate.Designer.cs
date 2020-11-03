@@ -10,7 +10,7 @@ using bingo_project.Models;
 namespace project_bingo.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20201103042716_NewCreate")]
+    [Migration("20201103211243_NewCreate")]
     partial class NewCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

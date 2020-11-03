@@ -28,7 +28,7 @@
                 <th colspan="10">Selected numbers</th>
             </thead>
             <tbody>
-                <tr *ngFor="let lists of list">
+                <tr *ngFor="let lists of list.slice().reverse()">
                     <td><p class="list-item">{{lists}}</p></td>
                    
                 </tr>
@@ -43,6 +43,7 @@
     <div id="image">
         <img id="tombola" src="https://jpsenlinea.com/assets/tombola2.gif">
     </div>
+    <div class="total">Users: {{usersOnline}}</div>
     <div id="controller">
         <input type="submit" value="Get new number" id="selector" (click)="obtain()">
         <div id="spacer"></div>
@@ -68,7 +69,7 @@
 <div *ngFor = "let card of cardboards" >
     {{card}}
 </div>
-<!--
+
 <div *ngIf="showFormUser">
     <div id="cardboards" *ngIf="showFormGame">
         <div id="cardboard" style="padding: 2%; background-color: lightgreen;">
@@ -83,87 +84,87 @@
                 <tbody>
                     <tr class="number-container">
                         <td>
-                            <input class="number" type="text" value="30" disabled>
+                            <div><input class="number" type="text" value="{{list1[1]}}" disabled></div>
                         </td>
                         <td>
-                            <input class="number" type="text" value="30" disabled>
+                            <input class="number" type="text" value="{{list1[2]}}" disabled>
                         </td>
                         <td>
-                            <input class="number" type="text" value="30" disabled>
+                            <input class="number" type="text" value="{{list1[3]}}" disabled>
                         </td>
                         <td>
-                            <input class="number" type="text" value="30" disabled>
+                            <input class="number" type="text" value="{{list1[4]}}" disabled>
                         </td>
                         <td>
-                            <input class="number" type="text" value="30" disabled>
-                        </td>
-                    </tr>
-                    <tr class="number-container">
-                        <td>
-                            <input class="number" type="text" value="30" disabled>
-                        </td>
-                        <td>
-                            <input class="number" type="text" value="30" disabled>
-                        </td>
-                        <td>
-                            <input class="number" type="text" value="30" disabled>
-                        </td>
-                        <td>
-                            <input class="number" type="text" value="30" disabled>
-                        </td>
-                        <td>
-                            <input class="number" type="text" value="30" disabled>
+                            <input class="number" type="text" value="{{list1[5]}}" disabled>
                         </td>
                     </tr>
                     <tr class="number-container">
                         <td>
-                            <input class="number" type="text" value="30" disabled>
+                            <input class="number" type="text" value="{{list1[6]}}" disabled>
                         </td>
                         <td>
-                            <input class="number" type="text" value="30" disabled>
+                            <input class="number" type="text" value="{{list1[7]}}" disabled>
                         </td>
                         <td>
-                            <input class="number" type="text" value="30" disabled>
+                            <input class="number" type="text" value="{{list1[8]}}" disabled>
                         </td>
                         <td>
-                            <input class="number" type="text" value="30" disabled>
+                            <input class="number" type="text" value="{{list1[9]}}" disabled>
                         </td>
                         <td>
-                            <input class="number" type="text" value="30" disabled>
-                        </td>
-                    </tr>
-                    <tr class="number-container">
-                        <td>
-                            <input class="number" type="text" value="30" disabled>
-                        </td>
-                        <td>
-                            <input class="number" type="text" value="30" disabled>
-                        </td>
-                        <td>
-                            <input class="number" type="text" value="30" disabled>
-                        </td>
-                        <td>
-                            <input class="number" type="text" value="30" disabled>
-                        </td>
-                        <td>
-                            <input class="number" type="text" value="30" disabled>
+                            <input class="number" type="text" value="{{list1[10]}}" disabled>
                         </td>
                     </tr>
                     <tr class="number-container">
                         <td>
-                            <input class="number" type="text" value="30" disabled>
+                            <input class="number" type="text" value="{{list1[11]}}" disabled>
                         </td>
                         <td>
-                            <input class="number" type="text" value="30" disabled>
+                            <input class="number" type="text" value="{{list1[12]}}" disabled>
                         </td>
                         <td>
-                            <input class="number" type="text" value="30" disabled>
+                            <input class="number" type="text" value="{{list1[13]}}" disabled>
                         </td>
                         <td>
-                            <input class="number" type="text" value="30" disabled>
+                            <input class="number" type="text" value="{{list1[14]}}" disabled>
                         </td>
                         <td>
-                            <input class="number" type="text" value="30" disabled>
+                            <input class="number" type="text" value="{{list1[15]}}" disabled>
+                        </td>
+                    </tr>
+                    <tr class="number-container">
+                        <td>
+                            <input class="number" type="text" value="{{list1[16]}}" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="{{list1[17]}}" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="{{list1[18]}}" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="{{list1[19]}}" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="{{list1[20]}}" disabled>
+                        </td>
+                    </tr>
+                    <tr class="number-container">
+                        <td>
+                            <input class="number" type="text" value="{{list1[21]}}" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="{{list1[22]}}" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="{{list1[23]}}" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type= "text" value="{{list1[24]}}" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="{{list1[0]}}" disabled>
                         </td>
                     </tr>
                     

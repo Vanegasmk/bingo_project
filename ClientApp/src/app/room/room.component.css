@@ -19,7 +19,11 @@
   font-size: large;
   font-weight: bold;
 }
-
+.total{
+  text-align: inherit;
+  font-weight: bolder;
+  font-size: large;
+}
 body,
 html {
   height: 100%;
