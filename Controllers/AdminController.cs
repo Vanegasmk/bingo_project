@@ -21,22 +21,28 @@ namespace bingo_project.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Admin>>> GetAnimals()
+        public async Task<ActionResult<IEnumerable<Admin>>> GetAdmins()
         {
             return await _context.Admins.ToListAsync();
-        }
+        } 
 
-        [HttpGet("{email, password}")]
-        public async Task<ActionResult<Admin>> GetAdmin(long id)
+        [HttpGet("{email}/{password}")]
+        public async Task<ActionResult<Admin>> GetAdmin(string email, string password)
         {
-            var admin = await _context.Admins.FindAsync(id);
-            if (admin == null)
-            {
-                return NotFound();
-            }
-            return admin;
-        }    
+            var admin = _context.Admins.Where(x => x.Email == email).FirstOrDefault();
+                if (admin == null)
+                {
+                    return NotFound();
+                }
+                if (admin.Email.Equals(email) && admin.Password!=password)
+                {
+                    admin.Password="Contrseña invalida";
+                    return admin;   
+                }
+                return admin;
+                
         
         }
     
     }
+}
