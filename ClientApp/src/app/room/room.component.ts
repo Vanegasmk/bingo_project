@@ -19,7 +19,7 @@ export class RoomComponent {
   public room: string;//variable to set room code
   public totalCards: number;//variable to set amount of player cards
   public userForm: FormGroup;//fromGroup object
-  public total  : number = 0;//variable to set total
+  public usersOnline  : number = 0;//variable to set usersOnline
 
   constructor(private ActivatedRoute: ActivatedRoute, private _builder: FormBuilder) {
     this.userForm = this._builder.group({
@@ -33,7 +33,7 @@ export class RoomComponent {
     this.hubConnection = new HubConnectionBuilder().withUrl("/room").build();
 
     this.hubConnection.on("SendCount",(msg) => {
-      this.total = this.total + msg;
+      this.usersOnline = this.usersOnline + msg;
     });
     
     this.hubConnection.start().then(() => {
@@ -80,6 +80,6 @@ export class RoomComponent {
 
 
 
-  
+
 
 }
