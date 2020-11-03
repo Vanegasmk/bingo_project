@@ -25,9 +25,9 @@
         <img id="tombola" src="https://jpsenlinea.com/assets/tombola2.gif">
     </div>
     <div id="controller">
-        <input type="submit" value="Get new number" id="selector" disabled>
+        <input type="submit" value="Get new number" id="selector" (click)="getNewNumber()">
         <div id="spacer"></div>
-        <input id="number" type="text" value="27" disabled>
+        <input id="number" type="text" disabled value="{{number}}">
         <div id="spacer"></div>
     </div>
     <div id="table">

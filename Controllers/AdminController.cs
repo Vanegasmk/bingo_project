@@ -43,6 +43,15 @@ namespace bingo_project.Controllers
                 
         
         }
+
+        [HttpPost]
+        public async Task<ActionResult<Admin>> PostNumero(Admin admin)
+        {
+            _context.Admins.Add(admin);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetNumero", new { id = admin.Id }, admin);
+        }
     
     }
 }

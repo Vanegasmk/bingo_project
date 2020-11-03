@@ -4,6 +4,22 @@
   box-sizing: border-box;
 }
 
+.number-container{
+  text-align: center;
+  font-size: xx-large;
+  font-weight: bold;
+}
+
+.number{
+  font-weight: bolder;
+}
+
+.list-item{
+  text-align: center;
+  font-size: large;
+  font-weight: bold;
+}
+
 body,
 html {
   height: 100%;
