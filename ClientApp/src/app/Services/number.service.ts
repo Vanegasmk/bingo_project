@@ -15,6 +15,12 @@ export class NumberService {
     return this.httpClient.post<Int32List>(this.baseUrl + `api/Numeros`, fd);
   }
 
+
+  getListOfNum() {
+    let fd = new FormData();
+  return this.httpClient.get<Int32List>(this.baseUrl + `api/Numeros`);
+  }
+
   
 
 

@@ -5,7 +5,6 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { NumberService } from '../Services/number.service';
 
-
 @Component({
   selector: 'app-room',
   templateUrl: './room.component.html',
@@ -32,6 +31,22 @@ export class RoomComponent {
     });
     this.builConnection();
 
+    this.getList();
+    
+
+
+
+
+  }
+
+  getList() {
+    this.list = [];
+    this.numServices.getListOfNum().subscribe(result => {
+      result.forEach(element => {
+        this.list.push(element);
+      });
+    });
+
   }
 
   getNewNumber() {
@@ -41,8 +56,7 @@ export class RoomComponent {
         this.list.push(element);
       });
     });
-    
-    // console.log(this.list.);
+    this.sendMetadataNumber(this.list);
   }
 
 
@@ -51,6 +65,10 @@ export class RoomComponent {
 
     this.hubConnection.on("SendCount",(msg) => {
       this.usersOnline = this.usersOnline + msg;
+    });
+
+    this.hubConnection.on("SendNumbers", (msg) => {
+      this.list.concat(msg);
     });
     
     this.hubConnection.start().then(() => {
@@ -96,7 +114,9 @@ export class RoomComponent {
   }
 
 
-
+  sendMetadataNumber(values){
+    this.hubConnection.invoke("SendNumbersBingo",this.room,values);
+  }
 
 
 }

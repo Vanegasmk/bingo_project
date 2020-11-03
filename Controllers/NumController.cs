@@ -20,9 +20,17 @@ namespace bingo_project.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Numero>>> GetCardboards()
+        public async Task<ActionResult<List<int>>> GetNumbers()
         {
-            return await _context.Numeros.ToListAsync();
+            List<int> newList = new List<int>();
+            var listdb = await _context.Numeros.ToListAsync();
+            foreach (var nu in listdb)
+            {
+               newList.Add(nu.Num);
+            }
+            
+            return newList;
+
         }
 
 
