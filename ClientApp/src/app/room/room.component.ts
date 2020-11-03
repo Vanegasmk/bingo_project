@@ -16,7 +16,7 @@ export class RoomComponent {
   public showFormGame = false;//show div from cards
   public showFormAdmin = false;//show div from admin
   
-  public number; //nuevo numero
+  public number = 0; //nuevo numero
   public list = []; //lista numeros salidos
 
   public hubConnection: HubConnection;//variable for connection with signalr
@@ -49,15 +49,21 @@ export class RoomComponent {
 
   }
 
+
+  obtain(){
+    this.getNewNumber();
+  }
+
   getNewNumber() {
     this.list = [];
     this.numServices.listOfNums().subscribe(result => {
       result.forEach(element => {
         this.list.push(element);
+        this.sendMetadataNumber(element);
       });
-    });
-    this.sendMetadataNumber(this.list);
+    });  
   }
+
 
 
   builConnection() {//connection generated signalr
@@ -68,7 +74,7 @@ export class RoomComponent {
     });
 
     this.hubConnection.on("SendNumbers", (msg) => {
-      this.list.concat(msg);
+      this.list.push(msg);
     });
     
     this.hubConnection.start().then(() => {
@@ -114,8 +120,8 @@ export class RoomComponent {
   }
 
 
-  sendMetadataNumber(values){
-    this.hubConnection.invoke("SendNumbersBingo",this.room,values);
+  sendMetadataNumber(value){
+    this.hubConnection.invoke("SendNumbersBingo",this.room,value);
   }
 
 

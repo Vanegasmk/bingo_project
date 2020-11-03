@@ -19,9 +19,9 @@ namespace bingo_project.Hubs
             return  Clients.Group(groupname).SendAsync("SendCount",user);
         }
 
-        public Task SendNumbersBingo(string groupname, List<Int64> numbers)
+        public Task SendNumbersBingo(string groupname, int number)
         {
-            return Clients.Group(groupname).SendAsync("SendNumbers",numbers);
+            return Clients.Group(groupname).SendAsync("SendNumbers",number);
         }
 
 

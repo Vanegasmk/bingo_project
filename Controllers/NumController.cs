@@ -26,9 +26,9 @@ namespace bingo_project.Controllers
             var listdb = await _context.Numeros.ToListAsync();
             foreach (var nu in listdb)
             {
-               newList.Add(nu.Num);
+                newList.Add(nu.Num);
             }
-            
+
             return newList;
 
         }
@@ -42,10 +42,10 @@ namespace bingo_project.Controllers
             List<int> newList = new List<int>();
             Numero nuevoRandom = new Numero();
             var listdb = await _context.Numeros.ToListAsync(); //lista de la bd
-            
+
             foreach (var nu in listdb)
             {
-               newList.Add(nu.Num);
+                newList.Add(nu.Num);
             }
 
             while (repeat == false)
@@ -53,20 +53,35 @@ namespace bingo_project.Controllers
                 Random rnd = new Random();
                 int random = rnd.Next(1, 75);
 
-                if(!newList.Contains(random)){
+                if (!newList.Contains(random))
+                {
                     nuevoRandom.Num = random;
                     _context.Numeros.Add(nuevoRandom);
                     await _context.SaveChangesAsync();
                     newList.Add(random);
                     repeat = true;
-                }else{
+                }
+                else
+                {
                     repeat = false;
                 }
             }
 
             return newList;
         }
+        
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Numero>> DeleteNumero(long id)
+        {
+            var animal = await _context.Numeros.FindAsync(id);
+            if (animal == null)
+            {
+                return NotFound();
+            }
+            _context.Numeros.Remove(animal);
+            await _context.SaveChangesAsync();
 
-
+            return animal;
+        }
     }
 }
