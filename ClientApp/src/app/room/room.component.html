@@ -16,11 +16,30 @@
     </div>
 </div>
 
-<div>
-    <p>Users Online: {{usersOnline}}</p>
+
+
+<div id="game" *ngIf="showFormGame">
+    <div id="image">
+        <img id="tombola" src="https://jpsenlinea.com/assets/tombola2.gif">
+    </div>
+    <div id="table">
+        <table class="table table-hover table-striped responsive-table">
+            <thead>
+                <th colspan="10">Selected numbers</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let lists of list">
+                    <td><p class="list-item">{{lists}}</p></td>
+                   
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
-<div id="game" >
+
+
+<div id="game" *ngIf="showFormAdmin">
     <div id="image">
         <img id="tombola" src="https://jpsenlinea.com/assets/tombola2.gif">
     </div>
@@ -45,104 +64,113 @@
     </div>
 </div>
 <hr>
-<div id="cardboards">
-    <div id="cardboard" style="padding: 2%; background-color: lightgreen;">
-        <table>
-            <thead>
-                <tr>
-                    <th colspan="5" style="text-align: center; height: 7vh; font-size: 2.5vw; letter-spacing: 1.5vw; color: white; background-color: #a04000;">
-                        -B I N G O-
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="number-container">
-                    <td>
-                        <input class="number" type="text" value="30" disabled>
-                    </td>
-                    <td>
-                        <input class="number" type="text" value="30" disabled>
-                    </td>
-                    <td>
-                        <input class="number" type="text" value="30" disabled>
-                    </td>
-                    <td>
-                        <input class="number" type="text" value="30" disabled>
-                    </td>
-                    <td>
-                        <input class="number" type="text" value="30" disabled>
-                    </td>
-                </tr>
-                <tr class="number-container">
-                    <td>
-                        <input class="number" type="text" value="30" disabled>
-                    </td>
-                    <td>
-                        <input class="number" type="text" value="30" disabled>
-                    </td>
-                    <td>
-                        <input class="number" type="text" value="30" disabled>
-                    </td>
-                    <td>
-                        <input class="number" type="text" value="30" disabled>
-                    </td>
-                    <td>
-                        <input class="number" type="text" value="30" disabled>
-                    </td>
-                </tr>
-                <tr class="number-container">
-                    <td>
-                        <input class="number" type="text" value="30" disabled>
-                    </td>
-                    <td>
-                        <input class="number" type="text" value="30" disabled>
-                    </td>
-                    <td>
-                        <input class="number" type="text" value="30" disabled>
-                    </td>
-                    <td>
-                        <input class="number" type="text" value="30" disabled>
-                    </td>
-                    <td>
-                        <input class="number" type="text" value="30" disabled>
-                    </td>
-                </tr>
-                <tr class="number-container">
-                    <td>
-                        <input class="number" type="text" value="30" disabled>
-                    </td>
-                    <td>
-                        <input class="number" type="text" value="30" disabled>
-                    </td>
-                    <td>
-                        <input class="number" type="text" value="30" disabled>
-                    </td>
-                    <td>
-                        <input class="number" type="text" value="30" disabled>
-                    </td>
-                    <td>
-                        <input class="number" type="text" value="30" disabled>
-                    </td>
-                </tr>
-                <tr class="number-container">
-                    <td>
-                        <input class="number" type="text" value="30" disabled>
-                    </td>
-                    <td>
-                        <input class="number" type="text" value="30" disabled>
-                    </td>
-                    <td>
-                        <input class="number" type="text" value="30" disabled>
-                    </td>
-                    <td>
-                        <input class="number" type="text" value="30" disabled>
-                    </td>
-                    <td>
-                        <input class="number" type="text" value="30" disabled>
-                    </td>
-                </tr>
-                
-            </tbody>
-        </table>
+
+<div *ngFor = "let card of cardboards" >
+    {{card}}
+</div>
+<!--
+<div *ngIf="showFormUser">
+    <div id="cardboards" *ngIf="showFormGame">
+        <div id="cardboard" style="padding: 2%; background-color: lightgreen;">
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="5" style="text-align: center; height: 7vh; font-size: 2.5vw; letter-spacing: 1.5vw; color: white; background-color: #a04000;">
+                            B I N G O
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="number-container">
+                        <td>
+                            <input class="number" type="text" value="30" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="30" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="30" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="30" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="30" disabled>
+                        </td>
+                    </tr>
+                    <tr class="number-container">
+                        <td>
+                            <input class="number" type="text" value="30" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="30" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="30" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="30" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="30" disabled>
+                        </td>
+                    </tr>
+                    <tr class="number-container">
+                        <td>
+                            <input class="number" type="text" value="30" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="30" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="30" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="30" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="30" disabled>
+                        </td>
+                    </tr>
+                    <tr class="number-container">
+                        <td>
+                            <input class="number" type="text" value="30" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="30" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="30" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="30" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="30" disabled>
+                        </td>
+                    </tr>
+                    <tr class="number-container">
+                        <td>
+                            <input class="number" type="text" value="30" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="30" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="30" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="30" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="30" disabled>
+                        </td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
+
+-->
